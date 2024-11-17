@@ -5,3 +5,6 @@
     --orange: #f1ac16;
     --yellow: #e2df0e;
 }
+.fundo-azul{
+    background-color: var(--bluelight);
+}

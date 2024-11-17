@@ -3,13 +3,12 @@ import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-signup',
   standalone: true,
   imports: [HeaderComponent, FooterComponent],
-  providers:[],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css'
 })
-export class HomeComponent {
+export class SignupComponent {
 
 }

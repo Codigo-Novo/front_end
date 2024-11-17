@@ -1,0 +1,14 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.caixa-texto-p{
+    width: 100%;
+    font-size: 17px;
+}
+.c-main{
+    width: 500px;
+    margin: auto;
+    justify-items: center;
+    min-height: 100vh;
+}

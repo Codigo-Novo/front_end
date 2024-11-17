@@ -11,5 +11,6 @@ import { RouterOutlet } from '@angular/router';
 
 })
 export class AppComponent {
+  imgpath: string = 'assets/logo.jpg';  // Caminho da imagem
   title = 'firt_test';
 }
