@@ -1,5 +1,9 @@
 .app-header{
+    padding: 0 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+}
+.img-logo{
+    width: 100px;
 }

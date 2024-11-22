@@ -1,0 +1,28 @@
+<body>
+    <app-header></app-header>
+    <main class="c-main">
+        <section>
+            <h2>Sign Up</h2>
+            <form action="/signup" method="POST">
+                
+                <label for="name">Nome</label><br>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="name" id="name" name="name" placeholder="Digite seu nome" required>
+            
+                <label for="email">E-mail</label><br>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+            
+                <label for="password">Senha</label><br>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            
+                <label for="confirm">Confirmar Senha</label><br>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="confirm" id="confirm" name="confirm" placeholder="Digite sua senha novamente" required>
+             
+    
+                <button class="btn-pattern mar-cima-1" type="submit">Cadastrar</button>
+            </form>
+    
+            <a href="#" class="have-account">Já tenho conta</a>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

@@ -1,0 +1,15 @@
+:root{
+    --bluelight1:rgb(192, 191, 248);
+    --bluelight2: #6765f3;
+    --blueintermed: #1411d4;
+    --bluedark: #0c098a;
+    --orangelight: #f5c255;
+    --orange: #f1ac16;
+    --yellow: #e2df0e;
+    --brown: #d6b091;
+    --brown2: #a16c41;
+    --brown3: #804e26;
+}
+.fundo-azul{
+    background-color: var(--bluelight);
+}

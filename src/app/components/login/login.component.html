@@ -1,0 +1,22 @@
+<body>
+    <app-header></app-header>
+    <main class="c-main">
+        <section>
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+           
+                <label for="email">E-mail</label>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+                <label for="password">Senha</label>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            
+    
+                <button class="btn-pattern mar-cima-1" type="submit">Entrar</button>
+            </form>
+    
+            <a href="#" class="forgot-password">Esqueci a senha</a>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

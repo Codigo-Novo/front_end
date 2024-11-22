@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Matemasie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "./assets/colors.css";
+:root{
+    --fonte_p: 1.2rem;
+    --fonte_m: 1.4rem;
+    --fonte_g: 1.6rem;
+    --fonte_gg: 2rem;
+    --fonte_gg: 3.2rem;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    background: linear-gradient(140deg, var(--brown), var(--brown2), var(--brown3));
+}
+.bgc-azul{
+    background-color: var(--bluelight);
+}
+main{
+    background-color: #e9ddc2;
+    border: solid 3px #c0c0c0;
+}
+.btn-pattern {
+    color: #fff;
+    background-color: #007bff;
+    border-color: 1px solid #007bff;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}   
+.btn-pattern:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-pattern:focus, .btn-pattern.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+  
+.img-p{
+    width: 200px;
+}
+.fonte-media{
+ font-size: var(--fonte_m);
+}
+.bgc-azul{
+    background-color: rgba(49, 49, 253, 0.603);
+}
+.links-inicio{
+    width: 100%;
+    margin: 0.5;
+    background-color: var(--orangelight);
+}
+.links-inicio:hover{
+    background-color: var(--orange);
+}
+.links-inicio:focus, .links-inicio.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+.pad-1{
+    padding: 0.5rem;
+}
+.pad-2{
+    padding: 0.8rem;
+}
+.mar-cima-1{
+    margin-top: 0.5rem;
+}
+.mar-baixo-1{
+    margin-bottom: 0.5rem;
+}
