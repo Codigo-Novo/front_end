@@ -1,17 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
-import { ApiService } from './api.service';
-
+import { FormsModule } from '@angular/forms';
+import { ApiService } from './api.service'; // Serviço
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpClientModule,
+    FormsModule,
   ],
   providers: [
     ApiService,
   ],
 })
-export class AppModule { }
+
+export class AppModule {}
