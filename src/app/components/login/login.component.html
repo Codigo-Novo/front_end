@@ -3,13 +3,13 @@
     <main class="c-main">
         <section>
             <h2>Login</h2>
-            <form action="/login" method="POST">
+            <form #loginForm="ngForm" (ngSubmit)="submitData(loginForm)">
            
-                <label for="email">E-mail</label>
-                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                <label for="username">Nome</label>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="username" id="username" name="username" placeholder="Digite seu e-mail" required ngModel>
 
                 <label for="password">Senha</label>
-                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required ngModel>
             
     
                 <button class="btn-pattern mar-cima-1" type="submit">Entrar</button>
