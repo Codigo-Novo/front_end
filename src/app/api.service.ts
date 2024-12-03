@@ -36,8 +36,8 @@ export class ApiService {
     login(data: { username: string; password: string }) {
         this.http.get('https://127.0.0.1:8000/csrf/', { withCredentials: true, observe: "response" }).subscribe({
             next: (response) => {
-                const csrfTokens = response.body;
-                const stringcsrfToken = JSON.stringify(csrfTokens);
+                const csrfToken = response.body;
+                const stringcsrfToken = JSON.stringify(csrfToken);
                 const parsedData = JSON.parse(stringcsrfToken);
                 console.log('Cookies:', parsedData.csrfToken);
 
@@ -51,7 +51,7 @@ export class ApiService {
                     username: data.username || ''
                 };
     
-                const url = this.apiRoot.concat('cadastro/login_view/');
+                const url = this.apiRoot.concat('cadastro/loginView/');
                 console.log('URL para API:', url);
                 console.log('Dados sendo enviados:', post_data);
     
