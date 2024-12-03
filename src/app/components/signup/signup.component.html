@@ -2,12 +2,12 @@
     <app-header></app-header>
     <main class="c-main">
         <section>
-            <h2>Sign Up</h2>
+            <h2>Cadastre-se</h2>
             <!-- Formulário Angular com ngForm -->
             <form #signupForm="ngForm" (ngSubmit)="submitData(signupForm)">
 
                 <!-- Campo Nome -->
-                <label for="name">Nome</label><br>
+                <label for="name">Nome</label>
                 <input 
                     class="caixa-texto-p mar-cima-1 mar-baixo-1" 
                     type="text" 
@@ -18,7 +18,7 @@
                     required>
 
                 <!-- Campo E-mail -->
-                <label for="email">E-mail</label><br>
+                <label for="email">E-mail</label>
                 <input 
                     class="caixa-texto-p mar-cima-1 mar-baixo-1" 
                     type="email" 
@@ -30,7 +30,7 @@
                     email>
 
                 <!-- Campo Senha -->
-                <label for="password">Senha</label><br>
+                <label for="password">Senha</label>
                 <input 
                     class="caixa-texto-p mar-cima-1 mar-baixo-1" 
                     type="password" 
@@ -42,7 +42,7 @@
                     minlength="6">
 
                 <!-- Campo Confirmar Senha -->
-                <label for="confirm">Confirmar Senha</label><br>
+                <label for="confirm">Confirmar Senha</label>
                 <input 
                     class="caixa-texto-p mar-cima-1 mar-baixo-1" 
                     type="password" 
@@ -53,7 +53,8 @@
                     required>
 
                 <!-- Botão de Cadastro -->
-                <button class="btn-pattern mar-cima-1" type="submit">Cadastrar</button>
+                <button class="btn-pattern mar-cima-1" type="submit">Cadastrar como DOADOR</button>
+                <a href="#"><button class="btn-pattern mar-cima-1">Cadastrar como INSTITUIÇÃO</button></a>
             </form>
 
             <a href="#" class="have-account">Já tenho conta</a>

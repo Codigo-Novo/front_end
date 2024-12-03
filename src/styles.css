@@ -14,14 +14,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
-    background: linear-gradient(140deg, var(--brown), var(--brown2), var(--brown3));
+    background: linear-gradient(140deg, #fff, var(--bluelight1), var(--bluelight2));
 }
 .bgc-azul{
     background-color: var(--bluelight);
-}
-main{
-    background-color: #e9ddc2;
-    border: solid 3px #c0c0c0;
 }
 .btn-pattern {
     color: #fff;
