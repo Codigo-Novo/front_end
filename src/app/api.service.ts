@@ -8,7 +8,7 @@ import { User } from './user.interface';
 })
 export class ApiService {
 
-    private apiRoot = 'http://127.0.0.1:8000/';
+    private apiRoot = 'https://127.0.0.1:8000/';
 
     constructor(private http: HttpClient) { } 
 
@@ -32,4 +32,40 @@ export class ApiService {
             error: (error) => console.error('Erro no POST:', error)
         });
     }
+
+    login(data: { username: string; password: string }) {
+        this.http.get('https://127.0.0.1:8000/csrf/', { withCredentials: true, observe: "response" }).subscribe({
+            next: (response) => {
+                const csrfTokens = response.body;
+                const stringcsrfToken = JSON.stringify(csrfTokens);
+                const parsedData = JSON.parse(stringcsrfToken);
+                console.log('Cookies:', parsedData.csrfToken);
+
+                if (!parsedData.csrfToken) {
+                    console.error('CSRF token não encontrado nos cookies.');
+                    return;
+                }
+    
+                const post_data = {
+                    password: data.password || '',
+                    username: data.username || ''
+                };
+    
+                const url = this.apiRoot.concat('cadastro/login_view/');
+                console.log('URL para API:', url);
+                console.log('Dados sendo enviados:', post_data);
+    
+                this.http.post(url, post_data, {
+                    withCredentials: true,
+                    headers: { 'X-CSRFToken': parsedData.csrfToken }
+                }).subscribe({
+                    next: (response) => console.log('Resposta da API:', response),
+                    error: (error) => console.error('Erro no POST:', error)
+                });
+            },
+            error: (error) => {
+                console.error('Erro ao obter CSRF token:', error);
+            }
+        });
+    }    
 }
