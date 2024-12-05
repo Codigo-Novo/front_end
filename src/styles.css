@@ -52,15 +52,20 @@ body{
 .bgc-azul{
     background-color: rgba(49, 49, 253, 0.603);
 }
+.largura-1{
+    width: 50px;
+}
 .links-inicio{
     width: 100%;
     margin: 0.5;
-    background-color: var(--orangelight);
+    background-color: var(--gray1);
+    
 }
 .links-inicio:hover{
-    background-color: var(--orange);
+    background-color: var(--gray2);
 }
 .links-inicio:focus, .links-inicio.focus {
+    background-color: var(--gray3);
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 .pad-1{
