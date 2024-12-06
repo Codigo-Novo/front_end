@@ -1,6 +1,10 @@
 <body>
-<app-header></app-header>
-<h1>Google Maps in Angular 17</h1>
-<google-map height="400px" width="400px" [options]="options"> </google-map>
-<app-footer></app-footer>
+    <app-header></app-header>
+    <main class=".c-main">
+        <section>
+            <h2>Mapa</h2>
+            <div ng-model="map" id="map-canvas" style="width: 500px; height: 500px;"></div>       
+        </section>
+    </main>
+    <app-footer></app-footer>
 </body>
