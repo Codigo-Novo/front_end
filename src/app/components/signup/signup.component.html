@@ -3,28 +3,58 @@
     <main class="c-main">
         <section>
             <h2>Sign Up</h2>
-            <form action="/signup" method="POST">
-                <div>
-                    <label for="name">Nome</label><br>
-                    <input class="caixa-texto-p" type="name" id="name" name="name" placeholder="Digite seu nome" required>
-                </div>
-                <div>
-                    <label for="email">E-mail</label><br>
-                    <input class="caixa-texto-p" type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-                </div>
-    
-                <div>
-                    <label for="password">Senha</label><br>
-                    <input class="caixa-texto-p" type="password" id="password" name="password" placeholder="Digite sua senha" required>
-                </div>
-                <div>
-                    <label for="confirm">Confirmar Senha</label><br>
-                    <input class="caixa-texto-p" type="confirm" id="confirm" name="confirm" placeholder="Digite sua senha novamente" required>
-                </div>
-    
-                <button type="submit">Cadastrar</button>
+            <!-- Formulário Angular com ngForm -->
+            <form #signupForm="ngForm" (ngSubmit)="submitData(signupForm)">
+
+                <!-- Campo Nome -->
+                <label for="name">Nome</label><br>
+                <input 
+                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Digite seu nome" 
+                    ngModel 
+                    required>
+
+                <!-- Campo E-mail -->
+                <label for="email">E-mail</label><br>
+                <input 
+                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="Digite seu e-mail" 
+                    ngModel 
+                    required 
+                    email>
+
+                <!-- Campo Senha -->
+                <label for="password">Senha</label><br>
+                <input 
+                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Digite sua senha" 
+                    ngModel 
+                    required 
+                    minlength="6">
+
+                <!-- Campo Confirmar Senha -->
+                <label for="confirm">Confirmar Senha</label><br>
+                <input 
+                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
+                    type="password" 
+                    id="confirm" 
+                    name="confirm" 
+                    placeholder="Digite sua senha novamente" 
+                    ngModel 
+                    required>
+
+                <!-- Botão de Cadastro -->
+                <button class="btn-pattern mar-cima-1" type="submit">Cadastrar</button>
             </form>
-    
             <a href="#" class="have-account">Já tenho conta</a>
         </section>
     </main>
