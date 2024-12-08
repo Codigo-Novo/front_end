@@ -19,10 +19,13 @@ body{
 .bgc-azul{
     background-color: var(--bluelight);
 }
+.border-hover:hover{
+    border: solid 1.5px var(--gray2);
+}
 .btn-pattern {
     color: #fff;
-    background-color: #007bff;
-    border-color: 1px solid #007bff;
+    background-color: #003ec5;
+    border-color:#0057b4;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -35,7 +38,7 @@ body{
 }   
 .btn-pattern:hover {
     color: #fff;
-    background-color: #0069d9;
+    background-color: #004896;
     border-color: #0062cc;
 }
 
@@ -57,12 +60,14 @@ body{
 }
 .links-inicio{
     width: 100%;
-    margin: 0.5;
+    margin: 0.2rem;
     background-color: var(--gray1);
-    
+    border: outset var(--gray4) 0.1rem;
+    border-radius: 0.25rem;
 }
 .links-inicio:hover{
     background-color: var(--gray2);
+    border: inset var(--gray4) 0.1rem;
 }
 .links-inicio:focus, .links-inicio.focus {
     background-color: var(--gray3);
@@ -74,9 +79,30 @@ body{
 .pad-2{
     padding: 0.8rem;
 }
+.mar-auto{
+    margin: auto;
+}
+.mar-r-l{
+    margin: 0 0.4rem 0 0.4rem;
+}
 .mar-cima-1{
     margin-top: 0.5rem;
 }
 .mar-baixo-1{
     margin-bottom: 0.5rem;
+}
+.d-b{
+    display: block;
+}
+.d-f{
+    display: flex;
+}
+.seta{
+    width: 25px;
+    height: 25px;
+}
+.seta:hover{
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 0.25rem;
+    background-color: var(--gray1);
 }
