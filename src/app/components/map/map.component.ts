@@ -3,6 +3,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { OnInit } from '@angular/core';
+import { ApiService } from '../../api.service';
+import { Institution } from '../../institution.interface';
 
 @Component({
   selector: 'app-map',
@@ -12,31 +14,34 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
+  institutions: Institution[] = [];
+
+  constructor(private api: ApiService) { }
+
   options: google.maps.MapOptions = {
     center: { lat: -24.043779373168945, lng: -52.38108825683594 },
     zoom: 15,
   };
-  
-  marcadores: { position: google.maps.LatLngLiteral; title: string }[] = [
-    { position: { lat: -24.043779, lng: -52.381088 }, title: 'Marcador 1' },
-    { position: { lat: -24.045, lng: -52.382 }, title: 'Marcador 2' },
-  ];
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.api.getInstitutions().subscribe((data: Institution[]) => {
+      this.institutions = data;
+    });
+    console.log("Teste:", this.institutions);
     var map = new google.maps.Map(document.getElementById('map-canvas')!, this.options);
     this.adicionarMarcadores(map);
   }
 
   adicionarMarcadores(map: google.maps.Map) {
-    this.marcadores.forEach((marcador) => {
-      console.log("Adicionando marcador:", marcador);
+    this.institutions.forEach((instituicao) => {
+      console.log("Adicionando marcador:", instituicao);
       const gMarker = new google.maps.Marker({
-        position: marcador.position,
+        position: { lat: instituicao.lat, lng: instituicao.long},
         map: map,
-        title: marcador.title,
+        title: instituicao.description,
       });
       const infoWindow = new google.maps.InfoWindow({
-        content: marcador.title,
+        content: instituicao.description,
       });
       gMarker.addListener('click', () => {
         infoWindow.open(map, gMarker);

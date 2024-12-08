@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.interface';
+import { Institution } from './institution.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +15,10 @@ export class ApiService {
 
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.apiRoot.concat('cadastro/usuario/'));
+    }
+
+    getInstitutions(): Observable<Institution[]> {
+        return this.http.get<Institution[]>(this.apiRoot.concat('cadastro/instituicao/'));
     }
 
     createUser(data: { username: string; email: string; password: string }) {
