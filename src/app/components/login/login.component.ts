@@ -8,6 +8,7 @@ import { NgForm, FormsModule } from '@angular/forms';
   selector: 'app-login',
   standalone: true,
   imports: [HeaderComponent, FooterComponent, FormsModule],
+  imports: [HeaderComponent, FooterComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

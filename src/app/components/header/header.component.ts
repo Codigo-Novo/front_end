@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  imgpath: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_35T28oqJIpEBumfnU_QuRmHi5hT7nKXYUw&s';  // Caminho da imagem
+  imgpath: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm7QDxdPUJrphv3FzWyVCw1uvO5jOMhTyNZQ&s';  // Caminho da imagem
 }

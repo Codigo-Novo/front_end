@@ -46,7 +46,6 @@ main{
 .btn-pattern:focus, .btn-pattern.focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
-  
 .img-p{
     width: 200px;
 }

@@ -9,6 +9,7 @@
     --brown: #d6b091;
     --brown2: #a16c41;
     --brown3: #804e26;
+    --bluelight: #6765f3;
 }
 .fundo-azul{
     background-color: var(--bluelight);
