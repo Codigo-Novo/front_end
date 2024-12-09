@@ -2,6 +2,9 @@
     <app-header></app-header>
     <main class="c-main">
         <section>
+            <div *ngIf="error" class="error">
+                {{ error }}
+            </div>
             <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Login</h2></div>
             <form #loginForm="ngForm" (ngSubmit)="submitData(loginForm)">
            

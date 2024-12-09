@@ -31,7 +31,7 @@ export class SignupComponent {
       this.api.createUser(data.value).then((success) => {
         if (success) {
           this.api.defineDonator(data.value.username);
-          this.router.navigate(['/']);
+          this.router.navigate(['/startdoador']);
         } else {
           console.error('Erro ao criar conta.');
         }

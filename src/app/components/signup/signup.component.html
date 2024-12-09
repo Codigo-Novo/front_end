@@ -6,8 +6,11 @@
            
             <form #signupForm="ngForm" (ngSubmit)="submitData(signupForm)">
 
+                <label for="name">Nome de usuário</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="username" name="username" placeholder="Digite seu nome de usuário" ngModel required>
+
                 <label for="name">Nome</label>
-                <input class="caixa-texto-p mar-baixo-1" type="text" id="username" name="username" placeholder="Digite seu nome" ngModel required>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="name" name="name" placeholder="Digite seu nome ou de sua instituição" ngModel required>
 
                 <label for="email">E-mail</label>
                 <input class="caixa-texto-p mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" ngModel required email>

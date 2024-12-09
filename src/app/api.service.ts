@@ -12,7 +12,7 @@ export class ApiService {
 
     constructor(private http: HttpClient) { } 
 
-    createUser(data: { username: string; email: string; password: string }) : Promise<Boolean> {
+    createUser(data: { username: string; name: string, email: string; password: string }) : Promise<Boolean> {
         return new Promise((resolve, reject) => {
             this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
                 next: (response) => {
@@ -26,6 +26,7 @@ export class ApiService {
                     }
                     const post_data = {
                         password: data.password || '',
+                        first_name: data.name || '',
                         email: data.email || '',
                         username: data.username || ''
                     };
