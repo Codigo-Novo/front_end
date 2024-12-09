@@ -3,6 +3,7 @@ import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { ApiService } from '../../api.service';
 import { NgForm, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,17 +15,30 @@ import { NgForm, FormsModule } from '@angular/forms';
 export class LoginComponent {
   error: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
-  submitData(data: NgForm) {
-    console.log('Data:', data);
-
+  async submitData(data: NgForm) {
     if (!data || !data.value) {
-        console.error('O formulário é inválido ou vazio:', data);
-        return;
+      console.error('O formulário é inválido ou vazio.');
+      return;
     }
-    
-    console.log('Dados válidos. Enviando para API:', data.value);
-    this.api.login(data.value);
+    this.api.checkAuth().subscribe({
+      next: (response) => {
+        console.log("Usuário já está autenticado.");
+      },
+      error: (error) => {
+        this.api.login(data.value).then((success) => {
+          if (success) {
+            this.router.navigate(['/']);
+          } else {
+            this.error = "Credenciais inválidas.";
+          }
+        });
+      }
+    });
+  }
+
+  logout() {
+    this.api.logout();
   }
 }

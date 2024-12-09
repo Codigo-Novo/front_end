@@ -18,8 +18,8 @@
                 <label for="confirm">Confirmar Senha</label>
                 <input class="caixa-texto-p mar-baixo-1" type="password" id="confirm" name="confirm" placeholder="Digite sua senha novamente" ngModel required>
 
-                    <button class="btn-pattern mar-cima-1 d-b mar-auto" type="submit">Cadastrar como DOADOR</button>
-                    <a href="#"><button class="btn-pattern mar-cima-1 d-b mar-auto">Cadastrar como INSTITUIÇÃO</button></a>
+                <button class="btn-pattern mar-cima-1 d-b mar-auto" type="button" (click)="donator(signupForm)">Cadastrar como DOADOR</button>
+                <button class="btn-pattern mar-cima-1 d-b mar-auto" type="button" (click)="institution(signupForm)">Cadastrar como INSTITUIÇÃO</button>
                 
             </form>
 
