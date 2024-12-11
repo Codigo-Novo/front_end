@@ -43,8 +43,4 @@ export class LoginComponent {
       }
     });
   }
-
-  logout() {
-    this.api.logout();
-  }
 }
