@@ -30,7 +30,7 @@ export class SignupinstituicaoComponent {
     }
     this.api.createInstitution(post_data).then((success) => {
       if (success) {
-        this.router.navigate(['/']);
+        this.router.navigate(['/startinstituicao']);
       } else {
         console.error('Erro ao criar conta.');
       }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navegacao',
@@ -8,5 +10,10 @@ import { Component } from '@angular/core';
   styleUrl: './navegacao.component.css'
 })
 export class NavegacaoComponent {
+  constructor(private api: ApiService, private router: Router) { }
 
+  logout() {
+    this.api.logout();
+    this.router.navigate(['/']);
+  }
 }
