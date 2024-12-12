@@ -16,17 +16,6 @@ label{
     width: 600px;
     margin: auto;
     padding-top: 1.5rem;
-.caixa-texto-p{
-    width: 100%;
-    font-size: 17px;
-}
-.c-main{
-    width: 500px;
-    margin: auto;
     justify-items: center;
     min-height: 100vh;
-}
-.error {
-    color: rgb(255, 57, 57);
-    font-weight: bold;
 }

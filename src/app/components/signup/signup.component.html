@@ -2,60 +2,32 @@
     <app-header></app-header>
     <main class="c-main">
         <section>
-            <h2>Sign Up</h2>
-            <!-- Formulário Angular com ngForm -->
+            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Cadastre-se</h2></div>
+           
             <form #signupForm="ngForm" (ngSubmit)="submitData(signupForm)">
 
-                <!-- Campo Nome -->
-                <label for="name">Nome</label><br>
-                <input 
-                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
-                    type="text" 
-                    id="username" 
-                    name="username" 
-                    placeholder="Digite seu nome" 
-                    ngModel 
-                    required>
+                <label for="name">Nome de usuário</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="username" name="username" placeholder="Digite seu nome de usuário" ngModel required>
 
-                <!-- Campo E-mail -->
-                <label for="email">E-mail</label><br>
-                <input 
-                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    placeholder="Digite seu e-mail" 
-                    ngModel 
-                    required 
-                    email>
+                <label for="name">Nome</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="name" name="name" placeholder="Digite seu nome ou de sua instituição" ngModel required>
 
-                <!-- Campo Senha -->
-                <label for="password">Senha</label><br>
-                <input 
-                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="Digite sua senha" 
-                    ngModel 
-                    required 
-                    minlength="6">
+                <label for="email">E-mail</label>
+                <input class="caixa-texto-p mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" ngModel required email>
 
-                <!-- Campo Confirmar Senha -->
-                <label for="confirm">Confirmar Senha</label><br>
-                <input 
-                    class="caixa-texto-p mar-cima-1 mar-baixo-1" 
-                    type="password" 
-                    id="confirm" 
-                    name="confirm" 
-                    placeholder="Digite sua senha novamente" 
-                    ngModel 
-                    required>
+                <label for="password">Senha</label>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" ngModel required minlength="6">
 
-                <!-- Botão de Cadastro -->
-                <button class="btn-pattern mar-cima-1" type="submit">Cadastrar</button>
+                <label for="confirm">Confirmar Senha</label>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="confirm" name="confirm" placeholder="Digite sua senha novamente" ngModel required>
+
+                <button class="btn-pattern mar-cima-1 d-b mar-auto" type="button" (click)="donator(signupForm)">Cadastrar como DOADOR</button>
+                <button class="btn-pattern mar-cima-1 d-b mar-auto" type="button" (click)="institution(signupForm)">Cadastrar como INSTITUIÇÃO</button>
+                
             </form>
-            <a href="#" class="have-account">Já tenho conta</a>
+
+            <p class="have-account mar-cima-1"><a href="#">Já tenho conta</a></p>
+
         </section>
     </main>
     <app-footer></app-footer>

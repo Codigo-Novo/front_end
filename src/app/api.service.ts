@@ -13,64 +13,217 @@ export class ApiService {
 
     constructor(private http: HttpClient) { } 
 
-    getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(this.apiRoot.concat('cadastro/usuario/'));
-    }
 
-    getInstitutions(): Observable<Institution[]> {
-        return this.http.get<Institution[]>(this.apiRoot.concat('cadastro/instituicao/'));
-    }
+    createUser(data: { username: string, name: string, email: string; password: string }) : Promise<Boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const post_data = {
+                        password: data.password || '',
+                        email: data.email || '',
+                        first_name: data.name || '',
+                        username: data.username || '',
+                    };
+                    const url = this.apiRoot.concat('cadastro/usuario/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            this.login(data);
+                            resolve(true);
+                        },
+                        error: (error) => {
+                            console.error('Erro no POST:', error.error)
+                            resolve(false);
+                        }
+                    });
+                }
+            })
+        })
 
-    createUser(data: { username: string; email: string; password: string }) {
-        const post_data = {
-            password: data.password || '',
-            email: data.email || '',
-            username: data.username || ''
-        };
     
-        const url = this.apiRoot.concat('cadastro/usuario/');
-        console.log('URL para API:', url);
-        console.log('Dados sendo enviados:', post_data);
-    
-        return this.http.post(url, post_data).subscribe({
-            next: (response) => console.log('Resposta da API:', response),
-            error: (error) => console.error('Erro no POST:', error)
-        });
     }
 
-    login(data: { username: string; password: string }) {
-        this.http.get('https://127.0.0.1:8000/csrf/', { withCredentials: true, observe: "response" }).subscribe({
+    defineDonator(username: string) {
+        this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
             next: (response) => {
                 const csrfToken = response.body;
                 const stringcsrfToken = JSON.stringify(csrfToken);
                 const parsedData = JSON.parse(stringcsrfToken);
-                console.log('Cookies:', parsedData.csrfToken);
-
                 if (!parsedData.csrfToken) {
                     console.error('CSRF token não encontrado nos cookies.');
                     return;
                 }
-    
+                const url = this.apiRoot.concat('cadastro/setUserDonator/');
                 const post_data = {
-                    password: data.password || '',
-                    username: data.username || ''
-                };
-    
-                const url = this.apiRoot.concat('cadastro/loginView/');
-                console.log('URL para API:', url);
-                console.log('Dados sendo enviados:', post_data);
-    
+
+                    username: username,
+                }
+
                 this.http.post(url, post_data, {
                     withCredentials: true,
-                    headers: { 'X-CSRFToken': parsedData.csrfToken }
-                }).subscribe({
-                    next: (response) => console.log('Resposta da API:', response),
-                    error: (error) => console.error('Erro no POST:', error)
+                    headers: { 'X-CSRFToken': parsedData.csrfToken }}).subscribe({
+                    next: (response) => {
+                        console.log('Resposta da API:', response);
+                    },
+                    error: (error) => console.error('Erro no POST:', error.error)
                 });
             },
             error: (error) => {
-                console.error('Erro ao obter CSRF token:', error);
-            }
+                console.error('Erro ao obter CSRF token:', error.error);
+            },
+        });
+    }
+
+    defineInstitution(username: string) : Promise <boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const url = this.apiRoot.concat('cadastro/setUserInstitution/');
+                    const post_data = {
+                        username: username,
+                    }
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }}).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            resolve(true);
+                        },
+                        error: (error) => { 
+                            console.error('Erro no POST:', error.error); 
+                            resolve(false);
+                        },
+                    });
+                },
+            });
+        })
+    }
+
+    createInstitution(data: { description: string, cpforcnpj: string, lat: number, long: number}) : Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const post_data = {
+                        description: data.description || '',
+                        cpforcnpj: data.cpforcnpj || '',
+                        lat: data.lat || '',
+                        long: data.long || '',
+                    };
+                    const url = this.apiRoot.concat('cadastro/createInstitution/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            resolve(true);
+                        },
+                        error: (error) => {
+                            console.error('Erro no POST:', error.error)
+                            resolve(false);
+                        }
+                    });
+                }
+            })
+        })
+    }
+
+    login(data: { username: string, password: string }) : Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const post_data = {
+                        password: data.password || '',
+                        username: data.username || ''
+                    };
+                    const url = this.apiRoot.concat('cadastro/loginView/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            resolve(true);
+                        },
+                        error: (error) => {
+                            console.error('Erro no POST:', error.error)
+                            resolve(false);
+                        }
+                    });
+                },
+                error: (error) => {
+                    console.error('Erro ao obter CSRF token:', error.error);
+                    resolve(false);
+                }
+            });
         });
     }    
+
+    logout() {
+        this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+            next: (response) => {
+                const csrfTokens = response.body;
+                const stringcsrfToken = JSON.stringify(csrfTokens);
+                const parsedData = JSON.parse(stringcsrfToken);
+                const payload = {};
+                return this.http.post(this.apiRoot.concat('/cadastro/logoutView/'), payload, { 
+                    withCredentials: true,
+                    headers: { 'X-CSRFToken': parsedData.csrfToken } 
+                }).subscribe({
+                    next: (response) => {
+                        console.log("Usuário deslogado com sucesso.");
+                    },
+                    error: (error) => {
+                        console.error("Erro ao fazer logout.");
+                    }
+                });
+            },
+            error: (error) => {
+                console.error("Erro ao obter csrfToken.");
+            }
+        });
+    }
+
+    checkAuth(): Observable<any>{
+        return this.http.get(`${this.apiRoot}/cadastro/checkAuth/`, { withCredentials: true });
+    }
+
+    checkInstitution(): Observable<any>{
+        return this.http.get(`${this.apiRoot}/cadastro/checkInstitution/`, { withCredentials: true });
+    }
 }

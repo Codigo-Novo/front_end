@@ -14,19 +14,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
-    background: linear-gradient(140deg, var(--brown), var(--brown2), var(--brown3));
+    background: linear-gradient(140deg, #fff, var(--bluelight1), var(--bluelight2));
 }
 .bgc-azul{
     background-color: var(--bluelight);
 }
-main{
-    background-color: #e9ddc2;
-    border: solid 3px #c0c0c0;
+.border-hover:hover{
+    border: solid 1.5px var(--gray2);
 }
 .btn-pattern {
     color: #fff;
-    background-color: #007bff;
-    border-color: 1px solid #007bff;
+    background-color: #003ec5;
+    border-color:#0057b4;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -39,7 +38,7 @@ main{
 }   
 .btn-pattern:hover {
     color: #fff;
-    background-color: #0069d9;
+    background-color: #004896;
     border-color: #0062cc;
 }
 
@@ -55,15 +54,22 @@ main{
 .bgc-azul{
     background-color: rgba(49, 49, 253, 0.603);
 }
+.largura-1{
+    width: 50px;
+}
 .links-inicio{
     width: 100%;
-    margin: 0.5;
-    background-color: var(--orangelight);
+    margin: 0.2rem;
+    background-color: var(--gray1);
+    border: outset var(--gray4) 0.1rem;
+    border-radius: 0.25rem;
 }
 .links-inicio:hover{
-    background-color: var(--orange);
+    background-color: var(--gray2);
+    border: inset var(--gray4) 0.1rem;
 }
 .links-inicio:focus, .links-inicio.focus {
+    background-color: var(--gray3);
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 .pad-1{
@@ -72,9 +78,32 @@ main{
 .pad-2{
     padding: 0.8rem;
 }
+.mar-auto{
+    margin: auto;
+}
+.mar-r-l{
+    margin: 0 0.4rem 0 0.4rem;
+}
 .mar-cima-1{
     margin-top: 0.5rem;
 }
 .mar-baixo-1{
     margin-bottom: 0.5rem;
 }
+
+.d-b{
+    display: block;
+}
+.d-f{
+    display: flex;
+}
+.seta{
+    width: 25px;
+    height: 25px;
+}
+.seta:hover{
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 0.25rem;
+    background-color: var(--gray1);
+}
+

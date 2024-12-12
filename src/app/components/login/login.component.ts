@@ -3,29 +3,52 @@ import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { ApiService } from '../../api.service';
 import { NgForm, FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, FormsModule],
-  imports: [HeaderComponent, FooterComponent],
+
+  imports: [NgIf, HeaderComponent, FooterComponent, FormsModule],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  error: any;
+  error: string | null = null;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
-  submitData(data: NgForm) {
-    console.log('Data:', data);
-
+  async submitData(data: NgForm) {
     if (!data || !data.value) {
-        console.error('O formulário é inválido ou vazio:', data);
-        return;
+      this.error = "O formulário é vazio ou inválido.";
+      return;
     }
-    
-    console.log('Dados válidos. Enviando para API:', data.value);
-    this.api.login(data.value);
+    if (!data.value.username || !data.value.password) {
+      this.error = "Preencha todos os campos.";
+      return;
+    }
+    this.api.checkAuth().subscribe({
+      next: (response) => {
+        this.error = "Usuário já está autenticado.";
+      },
+      error: (error) => {
+        this.api.login(data.value).then((success) => {
+          if (success) {
+            this.api.checkInstitution().subscribe({
+              next: (value) => {
+                this.router.navigate(['/startinstituicao'])
+              },
+              error: (error) => {
+                this.router.navigate(['/startdoador'])
+              }
+            })
+          } else {
+            this.error = "Credenciais inválidas.";
+          }
+        });
+      }
+    });
   }
 }

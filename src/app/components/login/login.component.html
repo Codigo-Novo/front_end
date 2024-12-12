@@ -2,18 +2,24 @@
     <app-header></app-header>
     <main class="c-main">
         <section>
-            <h2>Login</h2>
+            <div *ngIf="error" class="error">
+                {{ error }}
+            </div>
+            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Login</h2></div>
             <form #loginForm="ngForm" (ngSubmit)="submitData(loginForm)">
            
-                <label for="username">Nome</label>
-                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="username" id="username" name="username" placeholder="Digite seu e-mail" required ngModel>
+                <label for="username">Nome de usuário</label>
+                <input class="caixa-texto-p mar-baixo-1" type="username" id="username" name="username" placeholder="Digite seu nome de usuário" required ngModel>
 
                 <label for="password">Senha</label>
-                <input class="caixa-texto-p mar-cima-1 mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required ngModel>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required ngModel>
             
     
                 <button class="btn-pattern mar-cima-1" type="submit">Entrar</button>
-    
+
+            </form>
+            <a href="#" class="have-account">Criar conta</a><br>
+
             <a href="#" class="forgot-password">Esqueci a senha</a>
         </section>
     </main>

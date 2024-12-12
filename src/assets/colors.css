@@ -1,15 +1,16 @@
 :root{
-    --bluelight1:rgb(192, 191, 248);
-    --bluelight2: #6765f3;
+    --bluelight1:rgb(234, 233, 255);
+    --bluelight2: #c5c5f5;
     --blueintermed: #1411d4;
     --bluedark: #0c098a;
     --orangelight: #f5c255;
     --orange: #f1ac16;
     --yellow: #e2df0e;
-    --brown: #d6b091;
-    --brown2: #a16c41;
-    --brown3: #804e26;
-    --bluelight: #6765f3;
+    --gray1: #e6e6e6;
+    --gray2: #b9b9b9;
+    --gray3: #a0a0a0;
+    --gray4: #7a7a7a;
+
 }
 .fundo-azul{
     background-color: var(--bluelight);
