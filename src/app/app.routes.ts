@@ -9,6 +9,7 @@ import { StartdoadorComponent } from './components/startdoador/startdoador.compo
 import { StartinstituicaoComponent } from './components/startinstituicao/startinstituicao.component';
 import { SignupinstituicaoComponent } from './components/signupinstituicao/signupinstituicao.component';
 
+
 export const routes: Routes = [
     {
       path: "",
@@ -36,6 +37,7 @@ export const routes: Routes = [
       component: DeleteaccountComponent
     },
     {
+
       path: "startdoador",
       title: 'Página de início',
       component: StartdoadorComponent
@@ -49,7 +51,7 @@ export const routes: Routes = [
     path: "signupinstituicao",
     title: 'Cadastrar Instituição',
     component: SignupinstituicaoComponent
-    },
+
 
 ];
 @NgModule({

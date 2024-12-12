@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.interface';
+import { Institution } from './institution.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,7 @@ export class ApiService {
     private apiRoot = 'https://127.0.0.1:8000/';
 
     constructor(private http: HttpClient) { } 
+
 
     createUser(data: { username: string, name: string, email: string; password: string }) : Promise<Boolean> {
         return new Promise((resolve, reject) => {
@@ -48,13 +50,15 @@ export class ApiService {
                 }
             })
         })
+
+    
     }
 
     defineDonator(username: string) {
         this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
             next: (response) => {
-                const csrfTokens = response.body;
-                const stringcsrfToken = JSON.stringify(csrfTokens);
+                const csrfToken = response.body;
+                const stringcsrfToken = JSON.stringify(csrfToken);
                 const parsedData = JSON.parse(stringcsrfToken);
                 if (!parsedData.csrfToken) {
                     console.error('CSRF token não encontrado nos cookies.');
@@ -62,8 +66,10 @@ export class ApiService {
                 }
                 const url = this.apiRoot.concat('cadastro/setUserDonator/');
                 const post_data = {
+
                     username: username,
                 }
+
                 this.http.post(url, post_data, {
                     withCredentials: true,
                     headers: { 'X-CSRFToken': parsedData.csrfToken }}).subscribe({
