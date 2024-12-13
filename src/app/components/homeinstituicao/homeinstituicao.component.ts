@@ -6,9 +6,9 @@ import { FooterComponent } from "../footer/footer.component";
   selector: 'app-startinstituicao',
   standalone: true,
   imports: [NavegacaoComponent, FooterComponent],
-  templateUrl: './startinstituicao.component.html',
-  styleUrl: './startinstituicao.component.css'
+  templateUrl: './homeinstituicao.component.html',
+  styleUrl: './homeinstituicao.component.css'
 })
-export class StartinstituicaoComponent {
+export class HomeinstituicaoComponent {
 
 }

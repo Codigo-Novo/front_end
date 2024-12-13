@@ -97,6 +97,9 @@ body{
 .d-f{
     display: flex;
 }
+.radius-pattern{
+    border-radius: 0.25rem;
+}
 .seta{
     width: 25px;
     height: 25px;
@@ -105,4 +108,7 @@ body{
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border-radius: 0.25rem;
     background-color: var(--gray1);
+}
+.t-center{
+    text-align: center;
 }
