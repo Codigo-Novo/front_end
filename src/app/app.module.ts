@@ -5,12 +5,14 @@ import { ApiService } from './api.service';
 import { DataService } from './data.service';
 import { GeolocationService } from './geolocation.service';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     GoogleMapsModule,
+    NgSelectModule,
   ],
   providers: [
     ApiService,

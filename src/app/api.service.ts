@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ApiService {
-
     private apiRoot = 'https://127.0.0.1:8000/';
 
     constructor(private http: HttpClient) { } 
@@ -222,5 +221,117 @@ export class ApiService {
 
     checkInstitution(): Observable<any>{
         return this.http.get(`${this.apiRoot}/cadastro/checkInstitution/`, { withCredentials: true });
+    }
+
+    addKeyWordInstitution(data: { institutionUsername: string, keywordId: number }): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const post_data = {
+                        institutionUsername: data.institutionUsername || '',
+                        keywordId: data.keywordId || ''
+                    };
+                    const url = this.apiRoot.concat('cadastro/addKeyWordInstitution/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            resolve(true);
+                        },
+                        error: (error) => {
+                            console.error('Erro no POST:', error.error)
+                            resolve(false);
+                        }
+                    });
+                },
+                error: (error) => {
+                    console.error('Erro ao obter CSRF token:', error.error);
+                    resolve(false);
+                }
+            });
+        });
+    }
+
+    removeKeyWordInstitution(data: { institutionUsername: string, keywordId: number }): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const post_data = {
+                        institutionUsername: data.institutionUsername || '',
+                        keywordId: data.keywordId || ''
+                    };
+                    const url = this.apiRoot.concat('cadastro/removeKeyWordInstitution/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            resolve(true);
+                        },
+                        error: (error) => {
+                            console.error('Erro no POST:', error.error)
+                            resolve(false);
+                        }
+                    });
+                },
+                error: (error) => {
+                    console.error('Erro ao obter CSRF token:', error.error);
+                    resolve(false);
+                }
+            });
+        });
+    }
+
+    createKeyWord(data: {keywordName: string }): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        console.error('CSRF token não encontrado nos cookies.');
+                        resolve(false);
+                        return;
+                    }
+                    const post_data = {
+                        name: data.keywordName || '',
+                    };
+                    const url = this.apiRoot.concat('cadastro/palavraschave/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response) => {
+                            console.log('Resposta da API:', response);
+                            resolve(true);
+                        },
+                        error: (error) => {
+                            console.error('Erro no POST:', error.error)
+                            resolve(false);
+                        }
+                    });
+                }
+            })
+        })
     }
 }

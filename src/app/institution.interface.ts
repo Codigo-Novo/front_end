@@ -5,5 +5,5 @@ export interface Institution {
     cpforcnpj: string;
     long: number;
     lat: number;
-    keyword: number[];
+    keywords: number[];
 }

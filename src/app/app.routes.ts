@@ -43,14 +43,14 @@ export const routes: Routes = [
       component: StartdoadorComponent
     },
     {
-    path: "startinstituicao",
-    title: 'Página de início',
-    component: StartinstituicaoComponent
+      path: "startinstituicao",
+      title: 'Página de início',
+      component: StartinstituicaoComponent
     },
     {
-    path: "signupinstituicao",
-    title: 'Cadastrar Instituição',
-    component: SignupinstituicaoComponent
+      path: "signupinstituicao",
+      title: 'Cadastrar Instituição',
+      component: SignupinstituicaoComponent
     }
 
 ];
