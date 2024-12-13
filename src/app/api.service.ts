@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from './user.interface';
-import { Institution } from './institution.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +10,6 @@ export class ApiService {
     private apiRoot = 'https://127.0.0.1:8000/';
 
     constructor(private http: HttpClient) { } 
-
 
     createUser(data: { username: string, name: string, email: string; password: string }) : Promise<Boolean> {
         return new Promise((resolve, reject) => {

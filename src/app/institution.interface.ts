@@ -1,8 +1,9 @@
 export interface Institution {
     id: number;
-    user: number;
+    user: string;
+    description: string;
+    cpforcnpj: string;
     long: number;
     lat: number;
-    category: number[];
-    description: string;
+    keyword: number[];
 }

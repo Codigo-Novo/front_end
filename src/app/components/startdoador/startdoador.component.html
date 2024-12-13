@@ -2,6 +2,10 @@
   <app-navegacao></app-navegacao>
   <main class="c-main">
       <section>
+        <section>
+          <input (input)="onInput($event)" class="form-control mr-sm-2" placeholder="Pesquisar por instituições" aria-label="Pesquisar">
+          <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>     
+      </section>
       </section>
   </main>
   <app-footer></app-footer>

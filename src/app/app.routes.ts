@@ -51,7 +51,7 @@ export const routes: Routes = [
     path: "signupinstituicao",
     title: 'Cadastrar Instituição',
     component: SignupinstituicaoComponent
-
+    }
 
 ];
 @NgModule({
