@@ -8,7 +8,7 @@ import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount
 import { StartdoadorComponent } from './components/startdoador/startdoador.component';
 import { StartinstituicaoComponent } from './components/startinstituicao/startinstituicao.component';
 import { SignupinstituicaoComponent } from './components/signupinstituicao/signupinstituicao.component';
-
+import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
 
 export const routes: Routes = [
     {
@@ -51,6 +51,11 @@ export const routes: Routes = [
       path: "signupinstituicao",
       title: 'Cadastrar Instituição',
       component: SignupinstituicaoComponent
+    },
+    {
+      path: "paginainstituicao/:id",
+      title: 'Instituição',
+      component: PaginainstituicaoComponent
     }
 
 ];

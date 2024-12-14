@@ -24,4 +24,8 @@ export class DataService {
     getKeyWords(): Observable<KeyWord[]>{
         return this.http.get<KeyWord[]>(this.apiRoot.concat('cadastro/palavraschave/'));
     }
+
+    getKeyWord(id: number): Observable<KeyWord>{
+        return this.http.get<KeyWord>(this.apiRoot.concat(`cadastro/palavraschave/${id}`));
+    }
 }
