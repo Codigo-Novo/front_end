@@ -6,12 +6,12 @@
                 <h1>{{ institution.user }}</h1>
                 <p><strong>Descrição:</strong> {{ institution.description }}</p>
                 
-                <h2>Palavras-chave:</h2>
+                <h3>Palavras-chave:</h3>
                 <ul>
                   <li *ngFor="let keyword of keywords">{{ keyword.name }}</li>
                 </ul>
               </div>
-              
+              <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>  
               <ng-template #loading>
                 <p>Carregando dados da instituição...</p>
               </ng-template>
