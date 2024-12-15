@@ -9,11 +9,10 @@ import { GeolocationService } from '../../geolocation.service';
 import { OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-signupinstituicao',
-  standalone: true,
-  imports: [FooterComponent, HeaderComponent, FormsModule, GoogleMapsModule],
-  templateUrl: './signupinstituicao.component.html',
-  styleUrl: './signupinstituicao.component.css'
+    selector: 'app-signupinstituicao',
+    imports: [FooterComponent, HeaderComponent, FormsModule, GoogleMapsModule],
+    templateUrl: './signupinstituicao.component.html',
+    styleUrl: './signupinstituicao.component.css'
 })
 export class SignupinstituicaoComponent implements OnInit {
   

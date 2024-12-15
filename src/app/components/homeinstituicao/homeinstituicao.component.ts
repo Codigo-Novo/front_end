@@ -8,19 +8,18 @@ import { DataService } from '../../data.service';
 import { KeyWord } from '../../keyword.interface';
 import { Institution } from '../../institution.interface';
 import { OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.component";
 
 @Component({
-  selector: 'app-homeinstituicao',
-  standalone: true,
-  imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
-  templateUrl: './homeinstituicao.component.html',
-  styleUrl: './homeinstituicao.component.css'
+    selector: 'app-homeinstituicao',
+    imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
+    templateUrl: './homeinstituicao.component.html',
+    styleUrl: './homeinstituicao.component.css'
 })
-export class homeinstituicaoComponent implements OnInit {
+export class HomeinstituicaoComponent implements OnInit {
 
   keywords: KeyWord[] = [];
   selectedKeyword: KeyWord | null = null;

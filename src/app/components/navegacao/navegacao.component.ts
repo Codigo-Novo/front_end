@@ -5,12 +5,11 @@ import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navegacao',
-  standalone: true,
-  imports: [RouterLink, RouterOutlet],
-  providers:[],
-  templateUrl: './navegacao.component.html',
-  styleUrl: './navegacao.component.css'
+    selector: 'app-navegacao',
+    imports: [RouterLink, RouterOutlet],
+    providers: [],
+    templateUrl: './navegacao.component.html',
+    styleUrl: './navegacao.component.css'
 })
 export class NavegacaoComponent {
   constructor(private api: ApiService, private router: Router) { }

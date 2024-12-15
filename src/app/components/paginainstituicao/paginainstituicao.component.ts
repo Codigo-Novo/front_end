@@ -8,11 +8,10 @@ import { KeyWord } from '../../keyword.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-paginainstituicao',
-  standalone: true,
-  imports: [NavegacaoComponent, FooterComponent, CommonModule],
-  templateUrl: './paginainstituicao.component.html',
-  styleUrl: './paginainstituicao.component.css'
+    selector: 'app-paginainstituicao',
+    imports: [NavegacaoComponent, FooterComponent, CommonModule],
+    templateUrl: './paginainstituicao.component.html',
+    styleUrl: './paginainstituicao.component.css'
 })
 export class PaginainstituicaoComponent implements OnInit {
 

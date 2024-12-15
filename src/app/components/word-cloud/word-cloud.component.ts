@@ -3,11 +3,10 @@ import WordCloud from 'wordcloud';
 
 
 @Component({
-  selector: 'app-word-cloud',
-  standalone: true,
-  imports: [],
-  templateUrl: './word-cloud.component.html',
-  styleUrl: './word-cloud.component.css'
+    selector: 'app-word-cloud',
+    imports: [],
+    templateUrl: './word-cloud.component.html',
+    styleUrl: './word-cloud.component.css'
 })
 export class WordCloudComponent implements AfterViewInit {
 

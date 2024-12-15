@@ -4,13 +4,10 @@ import { FooterComponent } from "../footer/footer.component";
 import {HeaderComponent} from "../header/header.component";
 import { WordCloudComponent } from "../word-cloud/word-cloud.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
-
-
 import { OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { DataService } from '../../data.service';
 import { GeolocationService } from '../../geolocation.service';
-import { Router } from '@angular/router';
 import { Institution } from '../../institution.interface';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { KeyWord } from '../../keyword.interface';
@@ -20,21 +17,20 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-startdoador',
-  standalone: true,
-  imports: [HeaderComponent, RouterLink, RouterOutlet, NavegacaoComponent, FooterComponent, WordCloudComponent],
-  templateUrl: './homedoador.component.html',
-  styleUrl: './homedoador.component.css'
+    selector: 'app-homedoador',
+    imports: [HeaderComponent, RouterLink, RouterOutlet, NavegacaoComponent, FooterComponent, WordCloudComponent],
+    templateUrl: './homedoador.component.html',
+    styleUrl: './homedoador.component.css'
 })
 export class HomedoadorComponent {
 onInput($event: Event) {
 throw new Error('Method not implemented.');
 }
   imports: [NavegacaoComponent, FooterComponent, GoogleMapsModule, CommonModule, NgSelectModule, FormsModule],
-  templateUrl: './startdoador.component.html',
-  styleUrl: './startdoador.component.css'
+  templateUrl: './homedoador.component.html',
+  styleUrl: './homedoador.component.css'
 })
-export class StartdoadorComponent implements OnInit {
+export class HomedoadorComponent implements OnInit {
 
 
   institutions: Institution[] = [];
@@ -55,7 +51,7 @@ export class StartdoadorComponent implements OnInit {
               private geolocation: GeolocationService,
               private router: Router) { }
 
-  startMap(data: Institution[]) {
+  homeMap(data: Institution[]) {
     this.institutions = data;
     this.filteredInstitutions = data;
     var map = new google.maps.Map(document.getElementById('map-canvas')!, this.options);
@@ -74,7 +70,7 @@ export class StartdoadorComponent implements OnInit {
           this.data.getInstitutions().subscribe({
             next: async (data: Institution[]) => {
               this.keywords = await this.getKeywords();
-              this.startMap(data);
+              this.homeMap(data);
             },
             error: (error) => {
               console.error("Erro: ", error);
@@ -84,7 +80,7 @@ export class StartdoadorComponent implements OnInit {
             this.data.getInstitutions().subscribe({
               next: async (data: Institution[]) => {
                 this.keywords = await this.getKeywords();
-                this.startMap(data);
+                this.homeMap(data);
               },
               error: (error) => {
                 console.error("Erro: ", error);

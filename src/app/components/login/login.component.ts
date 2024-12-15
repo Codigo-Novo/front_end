@@ -7,13 +7,10 @@ import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-
-  imports: [NgIf, HeaderComponent, FooterComponent, FormsModule],
-
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    imports: [NgIf, HeaderComponent, FooterComponent, FormsModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
   error: string | null = null;

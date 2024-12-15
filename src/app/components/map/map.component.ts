@@ -5,11 +5,10 @@ import { ApiService } from '../../api.service';
 import { Institution } from '../../institution.interface';
 
 @Component({
-  selector: 'app-map',
-  standalone: true,
-  imports: [GoogleMapsModule],
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+    selector: 'app-map',
+    imports: [GoogleMapsModule],
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
   institutions: Institution[] = [];
