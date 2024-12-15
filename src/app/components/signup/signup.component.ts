@@ -48,8 +48,13 @@ export class SignupComponent {
     } else {
       this.api.createUser(data.value).then((success) => {
         if (success) {
-          this.api.defineInstitution(data.value.username);
-          this.router.navigate(['/signupinstituicao']);
+          this.api.defineInstitution(data.value.username).then((success2) => {
+            if (success2) { 
+              this.router.navigate(['/signupinstituicao']);
+            } else {
+              console.error('Erro ao definir usuário como instituição.')
+            }
+          });
         } else {
           console.error('Erro ao criar conta.');
         }

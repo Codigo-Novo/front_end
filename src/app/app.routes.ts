@@ -11,7 +11,8 @@ import { SignupinstituicaoComponent } from './components/signupinstituicao/signu
 import { AboutComponent } from './components/about/about.component';
 import { ProfileinstituicaoComponent } from './components/profileinstituicao/profileinstituicao.component';
 import { ProfiledoadorComponent } from './components/profiledoador/profiledoador.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
+import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
+import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
 
 export const routes: Routes = [
     {
@@ -40,12 +41,14 @@ export const routes: Routes = [
       component: DeleteaccountComponent
     },
     {
+
       path: "homedoador",
       title: 'Página Home',
       component: HomedoadorComponent
     },
     {
       path: "homeinstituicao",
+      path: "startdoador",
       title: 'Página de início',
       component: HomeinstituicaoComponent
     },
@@ -69,6 +72,16 @@ export const routes: Routes = [
       title: 'Perfil',
       component: ProfiledoadorComponent
     },
+    {
+      path: "signupinstituicao",
+      title: 'Cadastrar Instituição',
+      component: SignupinstituicaoComponent
+    },
+    {
+      path: "paginainstituicao/:id",
+      title: 'Instituição',
+      component: PaginainstituicaoComponent
+    }
 
 ];
 @NgModule({

@@ -45,7 +45,6 @@ body{
 .btn-pattern:focus, .btn-pattern.focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
-  
 .img-p{
     width: 200px;
 }
@@ -91,6 +90,7 @@ body{
 .mar-baixo-1{
     margin-bottom: 0.5rem;
 }
+
 .d-b{
     display: block;
 }
@@ -112,3 +112,4 @@ body{
 .t-center{
     text-align: center;
 }
+

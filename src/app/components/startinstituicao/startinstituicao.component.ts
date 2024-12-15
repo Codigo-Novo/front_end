@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { NavegacaoComponent } from "../navegacao/navegacao.component";
 import { FooterComponent } from "../footer/footer.component";
@@ -13,13 +12,13 @@ import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
-  selector: 'app-homeinstituicao',
+  selector: 'app-startinstituicao',
   standalone: true,
   imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule],
-  templateUrl: './homeinstituicao.component.html',
-  styleUrl: './homeinstituicao.component.css'
+  templateUrl: './startinstituicao.component.html',
+  styleUrl: './startinstituicao.component.css'
 })
-export class homeinstituicaoComponent implements OnInit {
+export class StartinstituicaoComponent implements OnInit {
 
   keywords: KeyWord[] = [];
   selectedKeyword: KeyWord | null = null;
@@ -165,4 +164,3 @@ export class homeinstituicaoComponent implements OnInit {
     });
   }
 }
-

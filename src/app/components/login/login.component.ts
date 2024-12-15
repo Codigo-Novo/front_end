@@ -9,7 +9,9 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
+
   imports: [NgIf, HeaderComponent, FooterComponent, FormsModule],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -34,17 +36,19 @@ export class LoginComponent {
       error: (error) => {
         this.api.login(data.value).then((success) => {
           if (success) {
-            this.router.navigate(['/']);
-            this.error = null;
+            this.api.checkInstitution().subscribe({
+              next: (value) => {
+                this.router.navigate(['/startinstituicao'])
+              },
+              error: (error) => {
+                this.router.navigate(['/startdoador'])
+              }
+            })
           } else {
             this.error = "Credenciais inválidas.";
           }
         });
       }
     });
-  }
-
-  logout() {
-    this.api.logout();
   }
 }
