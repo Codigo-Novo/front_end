@@ -9,9 +9,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-
   imports: [NgIf, HeaderComponent, FooterComponent, FormsModule],
-
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -38,10 +36,10 @@ export class LoginComponent {
           if (success) {
             this.api.checkInstitution().subscribe({
               next: (value) => {
-                this.router.navigate(['/startinstituicao'])
+                this.router.navigate(['/homeinstituicao'])
               },
               error: (error) => {
-                this.router.navigate(['/startdoador'])
+                this.router.navigate(['/homedoador'])
               }
             })
           } else {

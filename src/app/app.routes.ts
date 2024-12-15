@@ -12,7 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ProfileinstituicaoComponent } from './components/profileinstituicao/profileinstituicao.component';
 import { ProfiledoadorComponent } from './components/profiledoador/profiledoador.component';
 import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
-import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
+import { PesquisainstituicaoComponent } from './components/pesquisainstituicao/pesquisainstituicao.component';
 
 export const routes: Routes = [
     {
@@ -43,13 +43,11 @@ export const routes: Routes = [
     {
 
       path: "homedoador",
-      title: 'Página Home',
+      title: 'Página de início',
       component: HomedoadorComponent
     },
     {
       path: "homeinstituicao",
-
-      path: "startdoador",
       title: 'Página de início',
       component: HomeinstituicaoComponent
     },
@@ -79,11 +77,6 @@ export const routes: Routes = [
       component: SignupinstituicaoComponent
     },
     {
-      path: "startinstituicao",
-      title: 'Página de início',
-      component: StartinstituicaoComponent
-    },
-    {
       path: "signupinstituicao",
       title: 'Cadastrar Instituição',
       component: SignupinstituicaoComponent
@@ -92,6 +85,11 @@ export const routes: Routes = [
       path: "paginainstituicao/:id",
       title: 'Instituição',
       component: PaginainstituicaoComponent
+    },
+    {
+      path: "pesquisainstituicao/:id",
+      title: 'Pesquisa Instituição',
+      component: PesquisainstituicaoComponent
     }
 
 ];

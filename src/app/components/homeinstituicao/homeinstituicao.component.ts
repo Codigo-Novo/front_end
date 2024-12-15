@@ -1,6 +1,5 @@
 
 import { Component } from '@angular/core';
-import { NavegacaoComponent } from "../navegacao/navegacao.component";
 import { FooterComponent } from "../footer/footer.component";
 import { FormsModule, NgForm } from '@angular/forms';
 import { ApiService } from '../../api.service';
@@ -16,11 +15,11 @@ import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.compon
 @Component({
   selector: 'app-homeinstituicao',
   standalone: true,
-  imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
+  imports: [FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
   templateUrl: './homeinstituicao.component.html',
   styleUrl: './homeinstituicao.component.css'
 })
-export class homeinstituicaoComponent implements OnInit {
+export class HomeinstituicaoComponent implements OnInit {
 
   keywords: KeyWord[] = [];
   selectedKeyword: KeyWord | null = null;

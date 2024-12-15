@@ -94,7 +94,7 @@ export class SignupinstituicaoComponent implements OnInit {
     }
     this.api.createInstitution(post_data).then((success) => {
       if (success) {
-        this.router.navigate(['/startinstituicao']);
+        this.router.navigate(['/homeinstituicao']);
       } else {
         console.error('Erro ao criar conta.');
       }

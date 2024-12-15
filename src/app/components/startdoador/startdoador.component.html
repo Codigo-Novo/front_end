@@ -8,7 +8,7 @@
           
           <label for="addkeyword">Procure instituições por palavras-chave:</label>
           <ng-select id="selectkeyword" class="custom-ng-select" [(ngModel)]="selectedKeyword" [items]="keywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChange($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
-          <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>     
+          <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>   
         </section>
       </section>
   </main>

@@ -1,41 +1,28 @@
 import { Component } from '@angular/core';
 import { NavegacaoComponent } from "../navegacao/navegacao.component";
 import { FooterComponent } from "../footer/footer.component";
-import {HeaderComponent} from "../header/header.component";
 import { WordCloudComponent } from "../word-cloud/word-cloud.component";
-import { RouterLink, RouterOutlet } from '@angular/router';
-
-
 import { OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { DataService } from '../../data.service';
 import { GeolocationService } from '../../geolocation.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Institution } from '../../institution.interface';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { KeyWord } from '../../keyword.interface';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-startdoador',
   standalone: true,
-  imports: [HeaderComponent, RouterLink, RouterOutlet, NavegacaoComponent, FooterComponent, WordCloudComponent],
+  imports: [NavegacaoComponent, FooterComponent, WordCloudComponent, GoogleMapsModule, NgSelectModule, CommonModule, FormsModule],
   templateUrl: './homedoador.component.html',
   styleUrl: './homedoador.component.css'
 })
-export class HomedoadorComponent {
-onInput($event: Event) {
-throw new Error('Method not implemented.');
-}
-  imports: [NavegacaoComponent, FooterComponent, GoogleMapsModule, CommonModule, NgSelectModule, FormsModule],
-  templateUrl: './startdoador.component.html',
-  styleUrl: './startdoador.component.css'
-})
-export class StartdoadorComponent implements OnInit {
-
+export class HomedoadorComponent implements OnInit {
 
   institutions: Institution[] = [];
   filteredInstitutions: Institution[] = [];
@@ -53,7 +40,13 @@ export class StartdoadorComponent implements OnInit {
   constructor(private api: ApiService, 
               private data: DataService, 
               private geolocation: GeolocationService,
-              private router: Router) { }
+              private router: Router) {
+                this.router.events.pipe(
+                  filter(event => event instanceof NavigationEnd)
+                ).subscribe(() => {
+                  window.scrollTo(0, 0);
+                });
+               }
 
   startMap(data: Institution[]) {
     this.institutions = data;
