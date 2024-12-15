@@ -1,0 +1,34 @@
+<body>
+    <app-navegacao></app-navegacao>
+    <main class="c-main">
+        <section>
+            <div *ngIf="error" class="error">
+                {{ error }}
+            </div>
+            <div *ngIf="success" class="success">
+                {{ success }}
+            </div>
+            <form #addKey="ngForm" (ngSubmit)="addKeyWord(addKey)">
+                <label for="addkeyword">Escolha uma palavra-chave para adicionar:</label>
+                <ng-select id="addkeyword" class="custom-ng-select" [(ngModel)]="selectedKeyword" [items]="keywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChange($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
+                <div *ngIf="selectedKeyword?.id !== -1">
+                    <button class="btn-pattern mar-cima-1" type="submit">Adicionar</button>
+                </div>
+            </form>
+            <form #createKey="ngForm" (ngSubmit)="createKeyWord(createKey)">
+                <div *ngIf="selectedKeyword?.id === -1">
+                    <label for="otherKeyword">Adicionar nova palavra-chave:</label>
+                    <input type="text" id="otherKeyword" class="form-control" [(ngModel)]="otherKeyword" name="otherKeyword" placeholder="Digite a palavra-chave que deseja adicionar"/>
+                    
+                    <button class="btn-pattern mar-cima-1" type="submit">Adicionar</button>
+                </div>
+            </form>
+            <form #removeKey="ngForm" (ngSubmit)="removeKeyWord(removeKey)">
+                <label for="removekeyword">Escolha uma palavra-chave para remover:</label>
+                <ng-select id="removekeyword" class="custom-ng-select" [(ngModel)]="selectedInstitutionKeyword" [items]="institutionKeywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChangeRemoval($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
+                <button class="btn-pattern mar-cima-1" type="submit">Remover</button>
+            </form>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

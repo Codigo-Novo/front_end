@@ -11,11 +11,12 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.component";
 
 @Component({
   selector: 'app-homeinstituicao',
   standalone: true,
-  imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule],
+  imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
   templateUrl: './homeinstituicao.component.html',
   styleUrl: './homeinstituicao.component.css'
 })

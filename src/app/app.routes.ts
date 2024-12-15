@@ -48,6 +48,7 @@ export const routes: Routes = [
     },
     {
       path: "homeinstituicao",
+
       path: "startdoador",
       title: 'Página de início',
       component: HomeinstituicaoComponent
@@ -71,6 +72,16 @@ export const routes: Routes = [
       path: "profiledoador",
       title: 'Perfil',
       component: ProfiledoadorComponent
+    },
+    {
+      path: "signupinstituicao",
+      title: 'Cadastrar Instituição',
+      component: SignupinstituicaoComponent
+    },
+    {
+      path: "startinstituicao",
+      title: 'Página de início',
+      component: StartinstituicaoComponent
     },
     {
       path: "signupinstituicao",
