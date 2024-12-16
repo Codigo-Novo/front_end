@@ -1,18 +1,17 @@
 <body>
   <app-navegacao></app-navegacao>
   <main class="c-main">
-      <section>
-        <label for="searchinstitution">Procure instituições pelo nome:</label>
-        <input (input)="onInput($event)" class="form-control mr-sm-2" placeholder="Pesquisar por instituições" aria-label="Pesquisar">
-        
-        <label for="selectkeyword">Procure instituições por palavras-chave:</label>
-        <ng-select id="selectkeyword" class="custom-ng-select" [(ngModel)]="selectedKeyword" [items]="keywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChange($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
-        <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>     
-      </section>
       <section class="w-c">
-        <h4 class="t-center">Itens mais requisitados pelas instituições</h4>
+        <h4 class="t-center">Itens de doação mais requisitados pelas instituições:</h4>
         <app-word-cloud></app-word-cloud>
-        <i>Nuvem de palavras</i>
+      </section>
+      <section>
+        <h4 class="t-center">Procure instituições pelo nome:</h4>
+        <input (input)="onInput($event)" class="form-control mr-sm-2" placeholder="Digite o nome da instituição" aria-label="Pesquisar">
+        <br>
+        <h4 class="t-center">Procure instituições por item de doação:</h4>
+        <ng-select id="selectkeyword" class="custom-ng-select" [(ngModel)]="selectedKeyword" [items]="keywords" bindLabel="name" placeholder="Pesquise ou selecione um item de doação" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChange($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
+        <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>     
       </section>
   </main>
   <app-footer></app-footer>

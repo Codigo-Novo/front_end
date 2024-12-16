@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
 import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 

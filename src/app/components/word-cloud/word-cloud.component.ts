@@ -18,6 +18,7 @@ export class WordCloudComponent implements AfterViewInit {
   countWords: number[] = [];
   mapCountWords: number[] = [];
   words: [string, number][] = [];
+  colors: string[] = ['darkred', 'blue', 'green', 'darkgreen', 'orange', 'indigo', 'magenta', 'purple', 'cyan', 'hotpink'];
   n = 10;
   min = 25;
   max = 100;
@@ -38,6 +39,7 @@ export class WordCloudComponent implements AfterViewInit {
     })
     WordCloud(document.getElementById('word-cloud')!, {
       list: this.words.map((word, index) => [word[0], word[1]]),
+      backgroundColor: 'transparent',
     });
     setTimeout(() => {
       const wordCloudSpans = document.querySelectorAll('#word-cloud span');
@@ -51,8 +53,9 @@ export class WordCloudComponent implements AfterViewInit {
           e.preventDefault();
           this.router.navigate([`/pesquisainstituicao/${this.trendKeyWords[index].id}`]);
         });
+        link.style.color = this.colors[index];
       });
-    }, 200);
+    }, 300);
   }
 
   getTrendWords(): Promise<void> {

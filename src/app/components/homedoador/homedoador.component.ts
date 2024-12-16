@@ -149,12 +149,9 @@ export class HomedoadorComponent implements OnInit {
   onInput(event: Event) {
     const target = event.target as HTMLInputElement;
     if (target.value == '') {
+      this.filter = null;
       this.removerTodosMarcadores();
-      if (this.selectedKeyword) {
-        this.filteredInstitutions = this.institutions.filter(item => item.keywords.includes(this.selectedKeyword!.id));
-      } else {
-        this.filteredInstitutions = this.institutions;
-      }
+      this.filteredInstitutions = this.filterInstitution();
       this.adicionarMarcadores(this.map!);
       this.map?.setCenter(this.options.center!);
       return;
