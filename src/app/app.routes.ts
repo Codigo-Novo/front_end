@@ -49,7 +49,7 @@ export const routes: Routes = [
     },
     {
       path: "homeinstituicao",
-      title: 'Página Home',
+      title: 'Página de início',
       component: HomeinstituicaoComponent
     },
     {

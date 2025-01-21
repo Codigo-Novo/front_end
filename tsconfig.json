@@ -3,7 +3,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -20,17 +19,11 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "types": ["node", "jest", "@angular/core"],
-    "paths": {
-      "@angular/*": ["node_modules/@angular/*"]
-    },
     "lib": [
       "ES2022",
       "dom"
     ]
-    
   },
-  "include": ["src/**/*"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
@@ -38,3 +31,4 @@
     "strictTemplates": true
   }
 }
+

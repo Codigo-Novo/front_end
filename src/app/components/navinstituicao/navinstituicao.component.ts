@@ -9,6 +9,7 @@ import { ApiService } from '../../api.service';
     templateUrl: './navinstituicao.component.html',
     styleUrl: './navinstituicao.component.css'
 
+
 })
 export class NavinstituicaoComponent {
 

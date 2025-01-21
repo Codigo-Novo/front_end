@@ -13,12 +13,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.component";
 
 @Component({
-    selector: 'app-homeinstituicao',
-    standalone: true,
-    imports: [FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
-    templateUrl: './homeinstituicao.component.html',
-    styleUrl: './homeinstituicao.component.css'
-
+  selector: 'app-homeinstituicao',
+  standalone: true,
+  imports: [FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
+  templateUrl: './homeinstituicao.component.html',
+  styleUrl: './homeinstituicao.component.css'
 })
 export class HomeinstituicaoComponent implements OnInit {
 
