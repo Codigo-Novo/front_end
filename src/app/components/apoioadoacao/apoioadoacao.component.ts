@@ -5,15 +5,14 @@ import { CarouselComponent } from "../carousel/carousel.component";
 import { RouterLink, Router, RouterOutlet } from '@angular/router';
 import { ApiService } from '../../api.service';
 
+
 @Component({
-    selector: 'app-apoioadoacao',
-    standalone: true,
-    imports: [HeaderComponent, FooterComponent, CarouselComponent, RouterLink, RouterOutlet],
-    providers: [],
-    templateUrl: './apoioadoacao.component.html',
-    styleUrl: './apoioadoacao.component.css'
-
-
+  selector: 'app-apoioadoacao',
+  standalone: true,
+  imports: [HeaderComponent, FooterComponent, CarouselComponent, RouterLink],
+  providers:[],
+  templateUrl: './apoioadoacao.component.html',
+  styleUrl: './apoioadoacao.component.css'
 })
 
 export class ApoioadoacaoComponent implements OnInit {

@@ -13,7 +13,9 @@ import { ProfileinstituicaoComponent } from './components/profileinstituicao/pro
 import { ProfiledoadorComponent } from './components/profiledoador/profiledoador.component';
 import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
 import { PesquisainstituicaoComponent } from './components/pesquisainstituicao/pesquisainstituicao.component';
+
 import { SobresiteComponent } from './sobresite/sobresite.component';
+
 
 export const routes: Routes = [
     {
@@ -91,6 +93,7 @@ export const routes: Routes = [
       path: "pesquisainstituicao/:id",
       title: 'Pesquisa Instituição',
       component: PesquisainstituicaoComponent
+
     },
     {
       path: "sobresite",
