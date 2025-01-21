@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink, Router, RouterOutlet } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 
 @Component({
-    selector: 'app-navinstituicao',
-    standalone: true,
-    imports: [RouterLink, RouterOutlet],
-    templateUrl: './navinstituicao.component.html',
-    styleUrl: './navinstituicao.component.css'
-
-
+  selector: 'app-navinstituicao',
+  standalone: true,
+  imports: [RouterLink],
+  templateUrl: './navinstituicao.component.html',
+  styleUrl: './navinstituicao.component.css'
 })
 export class NavinstituicaoComponent {
 
