@@ -84,8 +84,14 @@ body{
 .mar-r-l{
     margin: 0 0.4rem 0 0.4rem;
 }
+.mar-r-l-2{
+    margin: 0 0.8rem 0 0.8rem;
+}
 .mar-cima-1{
     margin-top: 0.5rem;
+}
+.mar-cima-2{
+    margin-top: 0.8rem;
 }
 .mar-baixo-1{
     margin-bottom: 0.5rem;
@@ -103,6 +109,8 @@ body{
 .seta{
     width: 25px;
     height: 25px;
+    margin: 7px 7px 7px 0;
+    padding: 2px;
 }
 .seta:hover{
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

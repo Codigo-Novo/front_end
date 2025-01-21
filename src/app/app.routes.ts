@@ -12,6 +12,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ProfileinstituicaoComponent } from './components/profileinstituicao/profileinstituicao.component';
 import { ProfiledoadorComponent } from './components/profiledoador/profiledoador.component';
 import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
+import { PesquisainstituicaoComponent } from './components/pesquisainstituicao/pesquisainstituicao.component';
+import { SobresiteComponent } from './sobresite/sobresite.component';
 
 export const routes: Routes = [
     {
@@ -42,7 +44,7 @@ export const routes: Routes = [
     {
 
       path: "homedoador",
-      title: 'Página Home',
+      title: 'Página de início',
       component: HomedoadorComponent
     },
     {
@@ -84,6 +86,16 @@ export const routes: Routes = [
       path: "paginainstituicao/:id",
       title: 'Instituição',
       component: PaginainstituicaoComponent
+    },
+    {
+      path: "pesquisainstituicao/:id",
+      title: 'Pesquisa Instituição',
+      component: PesquisainstituicaoComponent
+    },
+    {
+      path: "sobresite",
+      title: 'Sobre o site',
+      component: SobresiteComponent
     }
 
 ];

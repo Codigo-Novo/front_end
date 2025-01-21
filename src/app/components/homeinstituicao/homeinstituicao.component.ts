@@ -1,6 +1,5 @@
 
 import { Component } from '@angular/core';
-import { NavegacaoComponent } from "../navegacao/navegacao.component";
 import { FooterComponent } from "../footer/footer.component";
 import { FormsModule, NgForm } from '@angular/forms';
 import { ApiService } from '../../api.service';
@@ -8,16 +7,18 @@ import { DataService } from '../../data.service';
 import { KeyWord } from '../../keyword.interface';
 import { Institution } from '../../institution.interface';
 import { OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.component";
 
 @Component({
     selector: 'app-homeinstituicao',
-    imports: [NavegacaoComponent, FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
+    standalone: true,
+    imports: [FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
     templateUrl: './homeinstituicao.component.html',
     styleUrl: './homeinstituicao.component.css'
+
 })
 export class HomeinstituicaoComponent implements OnInit {
 
@@ -59,7 +60,7 @@ export class HomeinstituicaoComponent implements OnInit {
       );
     });
   }
-
+ 
   getKeywords(): Promise<KeyWord[]> {
     return new Promise((resolve, reject) => {
       this.data.getKeyWords().subscribe(

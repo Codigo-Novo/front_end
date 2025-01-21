@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavegacaoComponent } from '../navegacao/navegacao.component';
 import { FooterComponent } from "../footer/footer.component";
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../data.service';
 import { Institution } from '../../institution.interface';
 import { KeyWord } from '../../keyword.interface';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 
 @Component({
     selector: 'app-paginainstituicao',
@@ -21,9 +21,11 @@ export class PaginainstituicaoComponent implements OnInit {
   map: google.maps.Map | null = null;
   options: google.maps.MapOptions | null = null;
 
+  found: boolean = true;
+
   constructor(private route: ActivatedRoute, 
               private data: DataService,
-              private router: Router) { }
+              private location: Location) { }
 
   async ngOnInit(): Promise<void> {
     try {
@@ -59,7 +61,7 @@ export class PaginainstituicaoComponent implements OnInit {
         infoWindow.open(map, gMarker);
       });
     } catch (error) {
-      this.router.navigate(['/']);
+      this.found = false;
     }
   }
 
@@ -79,5 +81,9 @@ export class PaginainstituicaoComponent implements OnInit {
         (error) => reject(error)
       );
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

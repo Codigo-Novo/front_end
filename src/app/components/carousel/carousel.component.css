@@ -1,6 +1,6 @@
 .carousel-container {
     position: relative;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     overflow: hidden;
   }
@@ -14,15 +14,16 @@
   .carousel-controls {
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 40%;
+    transform: translateX(-40%);
     display: flex;
+    color: white;
     justify-content: center;
     gap: 10px;
   }
   
   .carousel-controls button {
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
