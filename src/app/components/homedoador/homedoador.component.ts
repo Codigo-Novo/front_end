@@ -58,7 +58,7 @@ export class HomedoadorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.api.checkAuth().subscribe({
+    /*this.api.checkAuth().subscribe({
       next: (value) => {
         this.geolocation.getCurrentLocation().then((position) => {
           this.options.center = {
@@ -90,7 +90,7 @@ export class HomedoadorComponent implements OnInit {
         this.router.navigate(['/login']);
         console.error("Erro: ", error);
       },
-    })
+    })*/
   }
 
   getKeywords(): Promise<KeyWord[]> {

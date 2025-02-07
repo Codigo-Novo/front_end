@@ -121,3 +121,21 @@ body{
     text-align: center;
 }
 
+.tam_1{
+    width: 100px;
+}
+.tam_2{
+    width: 120px;
+}
+.tam_3{
+    width: 150px;
+}
+.tam_4{
+    width: 170px;
+}
+.tam_5{
+    width: 200px;
+}
+.titulo_times{
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -36,7 +36,7 @@ export class HomeinstituicaoComponent implements OnInit {
   constructor(private api: ApiService, private data: DataService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    try {
+    /*try {
       const next = await this.api.checkInstitution().toPromise();
       this.username = next.username;
       this.institution = await this.getInstitution(next.id);
@@ -48,7 +48,7 @@ export class HomeinstituicaoComponent implements OnInit {
       this.institutionKeywords = this.keywords.filter(item => this.institution!.keywords.includes(item.id));
     } catch (error) {
       this.router.navigate(['/login']);
-    }
+    }*/
   }
   
   getInstitution(id: number): Promise<Institution> {
@@ -108,7 +108,7 @@ export class HomeinstituicaoComponent implements OnInit {
       if (success) {
         this.error = '';
         this.success = `Palavra-chave ${data.value.keywordId.name} adicionada com sucesso à sua instituição.`;
-        this.ngOnInit();
+        //this.ngOnInit();
       } else {
         this.success = '';
         this.error = `Erro ao adicionar palavra-chave ${data.value.keywordId.name} à sua instituição.`;
@@ -129,7 +129,7 @@ export class HomeinstituicaoComponent implements OnInit {
       if (success) {
         this.error = '';
         this.success = `Palavra-chave ${data.value.otherKeyword} criada com sucesso!`;
-        this.ngOnInit();
+        //this.ngOnInit();
       } else {
         this.success = '';
         this.error = `Erro ao criar palavra-chave ${data.value.otherKeyword}.`;
@@ -156,7 +156,7 @@ export class HomeinstituicaoComponent implements OnInit {
       if (success) {
         this.error = '';
         this.success = `Palavra-chave ${data.value.keywordId.name} removida com sucesso da sua instituição.`;
-        this.ngOnInit();
+        //this.ngOnInit();
         this.selectedInstitutionKeyword = null;
       } else {
         this.success = '';

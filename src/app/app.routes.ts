@@ -8,14 +8,11 @@ import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount
 import { HomedoadorComponent } from './components/homedoador/homedoador.component';
 import { HomeinstituicaoComponent } from './components/homeinstituicao/homeinstituicao.component';
 import { SignupinstituicaoComponent } from './components/signupinstituicao/signupinstituicao.component';
-import { AboutComponent } from './components/about/about.component';
 import { ProfileinstituicaoComponent } from './components/profileinstituicao/profileinstituicao.component';
 import { ProfiledoadorComponent } from './components/profiledoador/profiledoador.component';
 import { PaginainstituicaoComponent } from './components/paginainstituicao/paginainstituicao.component';
 import { PesquisainstituicaoComponent } from './components/pesquisainstituicao/pesquisainstituicao.component';
-
-import { SobresiteComponent } from './sobresite/sobresite.component';
-
+import { SobresiteComponent } from './components/sobresite/sobresite.component';
 
 export const routes: Routes = [
     {
@@ -58,11 +55,6 @@ export const routes: Routes = [
       path: "signupinstituicao",
       title: 'Cadastrar Instituição',
       component: SignupinstituicaoComponent
-    },
-    {
-      path: "about",
-      title: 'Sobre o site',
-      component: AboutComponent
     },
     {
       path: "profileinstituicao",
