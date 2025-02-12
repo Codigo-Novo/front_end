@@ -11,6 +11,7 @@ import { OnInit } from '@angular/core';
 @Component({
     selector: 'app-signupinstituicao',
     imports: [FooterComponent, HeaderComponent, FormsModule, GoogleMapsModule],
+    standalone: true,
     templateUrl: './signupinstituicao.component.html',
     styleUrl: './signupinstituicao.component.css'
 })

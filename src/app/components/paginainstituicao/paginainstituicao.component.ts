@@ -10,6 +10,7 @@ import { CommonModule, Location } from '@angular/common';
 @Component({
     selector: 'app-paginainstituicao',
     imports: [NavegacaoComponent, FooterComponent, CommonModule],
+    standalone: true,
     templateUrl: './paginainstituicao.component.html',
     styleUrl: './paginainstituicao.component.css'
 })

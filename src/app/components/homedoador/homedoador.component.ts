@@ -58,39 +58,31 @@ export class HomedoadorComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*this.api.checkAuth().subscribe({
-      next: (value) => {
-        this.geolocation.getCurrentLocation().then((position) => {
-          this.options.center = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          this.data.getInstitutions().subscribe({
-            next: async (data: Institution[]) => {
-              this.keywords = await this.getKeywords();
-              this.homeMap(data);
-            },
-            error: (error) => {
-              console.error("Erro: ", error);
-            },
-          });}).catch((err) => {
-            console.error("Erro: ", err);
-            this.data.getInstitutions().subscribe({
-              next: async (data: Institution[]) => {
-                this.keywords = await this.getKeywords();
-                this.homeMap(data);
-              },
-              error: (error) => {
-                console.error("Erro: ", error);
-              },
-            });
+    this.geolocation.getCurrentLocation().then((position) => {
+      this.options.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+      this.data.getInstitutions().subscribe({
+        next: async (data: Institution[]) => {
+          this.keywords = await this.getKeywords();
+          this.homeMap(data);
+        },
+        error: (error) => {
+          console.error("Erro: ", error);
+        },
+      });}).catch((err) => {
+        console.error("Erro: ", err);
+        this.data.getInstitutions().subscribe({
+          next: async (data: Institution[]) => {
+            this.keywords = await this.getKeywords();
+            this.homeMap(data);
+          },
+          error: (error) => {
+            console.error("Erro: ", error);
+          },
         });
-      },
-      error: (error) => {
-        this.router.navigate(['/login']);
-        console.error("Erro: ", error);
-      },
-    })*/
+    });
   }
 
   getKeywords(): Promise<KeyWord[]> {

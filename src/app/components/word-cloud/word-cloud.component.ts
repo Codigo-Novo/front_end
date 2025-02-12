@@ -8,6 +8,7 @@ import WordCloud from 'wordcloud';
 @Component({
     selector: 'app-word-cloud',
     imports: [],
+    standalone: true,
     templateUrl: './word-cloud.component.html',
     styleUrl: './word-cloud.component.css'
 })
@@ -18,9 +19,9 @@ export class WordCloudComponent implements AfterViewInit {
   mapCountWords: number[] = [];
   words: [string, number][] = [];
   colors: string[] = ['darkred', 'blue', 'green', 'darkgreen', 'orange', 'indigo', 'magenta', 'purple', 'cyan', 'hotpink'];
-  n = 10;
-  min = 25;
-  max = 100;
+  n: number = 10;
+  min: number = 25;
+  max: number = 80;
 
   constructor(private data: DataService, private router: Router) { 
     this.router.events.pipe(
@@ -54,7 +55,7 @@ export class WordCloudComponent implements AfterViewInit {
         });
         link.style.color = this.colors[index];
       });
-    }, 300);
+    }, 500);
   }
 
   getTrendWords(): Promise<void> {

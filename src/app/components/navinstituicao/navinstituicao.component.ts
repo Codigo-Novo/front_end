@@ -12,9 +12,8 @@ import { ApiService } from '../../api.service';
 export class NavinstituicaoComponent {
 
   constructor(private api: ApiService, private router: Router) { }
-  logout() {
-
-    this.api.logout();
+  async logout() {
+    await this.api.logout();
     this.router.navigate(['/']);
   }
 }

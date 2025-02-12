@@ -6,17 +6,11 @@
 
     <!-- Controles manuais -->
     <div class="carousel-controls">
-      <div class="d-b t-center">
-        <h5>Encontre aqui instituições de caridade.</h5>
-        <h5>Instituição, cadastre-se no nosso site!</h5>
-      
-        <button class="mar-r-l" (click)="nextImage()">Próxima</button>
-        <button class="mar-r-l" (click)="toggleAutoRotate()">
-          {{ intervalId ? 'Pausar' : 'Iniciar' }} Rotação
-        </button>
-        <button class="mar-r-l" (click)="prevImage()">Anterior</button>
-
-      </div>
+      <button (click)="prevImage()">Anterior</button>
+      <button (click)="nextImage()">Próxima</button>
+      <button (click)="toggleAutoRotate()">
+        {{ intervalId ? 'Pausar' : 'Iniciar' }} Rotação
+      </button>
     </div>
   </div>
   

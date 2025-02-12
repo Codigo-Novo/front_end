@@ -33,9 +33,9 @@ export class ApiService {
                         withCredentials: true,
                         headers: { 'X-CSRFToken': parsedData.csrfToken }
                     }).subscribe({
-                        next: (response) => {
+                        next: async (response) => {
                             console.log('Resposta da API:', response);
-                            this.login(data);
+                            await this.login(data);
                             resolve(true);
                         },
                         error: (error) => {
@@ -190,29 +190,32 @@ export class ApiService {
         });
     }    
 
-    logout() {
-        this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
-            next: (response) => {
-                const csrfTokens = response.body;
-                const stringcsrfToken = JSON.stringify(csrfTokens);
-                const parsedData = JSON.parse(stringcsrfToken);
-                const payload = {};
-                return this.http.post(this.apiRoot.concat('/cadastro/logoutView/'), payload, { 
-                    withCredentials: true,
-                    headers: { 'X-CSRFToken': parsedData.csrfToken } 
-                }).subscribe({
-                    next: (response) => {
-                        console.log("Usuário deslogado com sucesso.");
-                    },
-                    error: (error) => {
-                        console.error("Erro ao fazer logout.");
-                    }
-                });
-            },
-            error: (error) => {
-                console.error("Erro ao obter csrfToken.");
-            }
-        });
+    logout(): Promise<void> {
+        return new Promise((resolve, reject)=> {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    const payload = {};
+                    return this.http.post(this.apiRoot.concat('/cadastro/logoutView/'), payload, { 
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken } 
+                    }).subscribe({
+                        next: (response) => {
+                            console.log("Usuário deslogado com sucesso.");
+                            resolve();
+                        },
+                        error: (error) => {
+                            console.error("Erro ao fazer logout.");
+                        }
+                    });
+                },
+                error: (error) => {
+                    console.error("Erro ao obter csrfToken.");
+                }
+            });
+        })
     }
 
     checkAuth(): Observable<any>{

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-signup',
     imports: [HeaderComponent, FooterComponent, FormsModule],
+    standalone: true,
     templateUrl: './signup.component.html',
     styleUrl: './signup.component.css'
 })
@@ -27,7 +28,7 @@ export class SignupComponent {
     if (data.value.password !== data.value.confirm) {
       console.log('Senhas digitadas diferentes!');
     } else {
-      this.api.createUser(data.value).then((success) => {
+      await this.api.createUser(data.value).then((success) => {
         if (success) {
           this.api.defineDonator(data.value.username);
           this.router.navigate(['/homedoador']);
