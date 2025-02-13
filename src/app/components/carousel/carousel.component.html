@@ -1,0 +1,16 @@
+<div class="carousel-container">
+    <!-- Imagem exibida -->
+    <div class="carousel-image">
+      <img [src]="images[currentIndex]" alt="carousel">
+    </div>
+
+    <!-- Controles manuais -->
+    <div class="carousel-controls">
+      <button (click)="prevImage()">Anterior</button>
+      <button (click)="nextImage()">Próxima</button>
+      <button (click)="toggleAutoRotate()">
+        {{ intervalId ? 'Pausar' : 'Iniciar' }} Rotação
+      </button>
+    </div>
+  </div>
+  

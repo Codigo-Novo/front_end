@@ -1,0 +1,26 @@
+<body>
+    <app-navegacao></app-navegacao>
+    <main class="c-main">
+        <section class="main-section">
+            <div *ngIf="error" class="error">
+                {{ error }}
+            </div>
+            <div *ngIf="success" class="success">
+                {{ success }}
+            </div>
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Registrar doação</h2></div>
+           
+            <form #signupForm="ngForm">
+
+                <label for="description">Descrição</label>
+                <textarea class="caixa-texto-p mar-baixo-1" id="description" name="description" placeholder="Descreva a doação. Exemplo: itens presentes, quantidade, etc" ngModel required rows=6 cols=55></textarea>
+
+                <label for="user">Nome de usuário</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="user" name="user" placeholder="Nome de usuário do doador" ngModel>
+
+                <button class="btn-pattern mar-cima-1 d-b mar-auto" type="button" (click)="createDonation(signupForm)">Registrar</button>
+            </form>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

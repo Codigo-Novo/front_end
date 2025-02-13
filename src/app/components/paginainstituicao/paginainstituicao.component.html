@@ -1,0 +1,26 @@
+<body>
+    <app-navegacao></app-navegacao>
+    <main class="c-main">
+        <section>
+          <div *ngIf="found">
+            <div *ngIf="institution; else loading">
+              <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h1>{{ institution.user }}</h1></div>
+              <p><strong>Sobre esta instituição:</strong></p>
+              <p> {{ institution.description }} </p>
+              <h4>Itens que ela está procurando no momento:</h4>
+              <ul>
+                <li *ngFor="let keyword of keywords">{{ keyword.name }}</li>
+              </ul>
+            </div>
+            <div ng-model="map" id="map-canvas" style="width: 600px; height: 500px;"></div>  
+              <ng-template #loading>
+                <p>Carregando dados da instituição...</p>
+              </ng-template>
+            </div>
+            <div *ngIf="!found">
+              <p>Instituição náo existe.</p> 
+            </div>
+          </section>
+    </main>
+    <app-footer></app-footer>
+</body>

@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { OnInit } from '@angular/core';
-import { ApiService } from '../../api.service';
 import { Institution } from '../../institution.interface';
+import { DataService } from '../../data.service';
 
 @Component({
-  selector: 'app-map',
-  standalone: true,
-  imports: [GoogleMapsModule],
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+    selector: 'app-map',
+    imports: [GoogleMapsModule],
+    standalone: true,
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
   institutions: Institution[] = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: DataService) { }
 
   options: google.maps.MapOptions = {
     center: { lat: -24.043779373168945, lng: -52.38108825683594 },

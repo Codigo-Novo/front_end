@@ -1,17 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from './api.service';
+import { DataService } from './data.service';
+import { GeolocationService } from './geolocation.service';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { ApiService } from './api.service'; // Serviço
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     GoogleMapsModule,
+    NgSelectModule,
   ],
   providers: [
     ApiService,
+    DataService,
+    GeolocationService,
   ],
 })
 

@@ -1,1 +1,4 @@
-
+@import "../../../assets/colors.css";
+a{
+    color: var(--gray3);
+}

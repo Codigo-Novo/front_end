@@ -84,8 +84,14 @@ body{
 .mar-r-l{
     margin: 0 0.4rem 0 0.4rem;
 }
+.mar-r-l-2{
+    margin: 0 0.8rem 0 0.8rem;
+}
 .mar-cima-1{
     margin-top: 0.5rem;
+}
+.mar-cima-2{
+    margin-top: 0.8rem;
 }
 .mar-baixo-1{
     margin-bottom: 0.5rem;
@@ -97,13 +103,39 @@ body{
 .d-f{
     display: flex;
 }
+.radius-pattern{
+    border-radius: 0.25rem;
+}
 .seta{
     width: 25px;
     height: 25px;
+    margin: 7px 7px 7px 0;
+    padding: 2px;
 }
 .seta:hover{
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     border-radius: 0.25rem;
     background-color: var(--gray1);
 }
+.t-center{
+    text-align: center;
+}
 
+.tam_1{
+    width: 100px;
+}
+.tam_2{
+    width: 120px;
+}
+.tam_3{
+    width: 150px;
+}
+.tam_4{
+    width: 170px;
+}
+.tam_5{
+    width: 200px;
+}
+.titulo_times{
+    font-family: 'Times New Roman', Times, serif;
+}
