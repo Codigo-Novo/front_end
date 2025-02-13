@@ -1,7 +1,7 @@
 export interface Institution {
-email: any;
-address: any;
-name: any;
+    email: any;
+    address: any;
+    name: any;
     id: number;
     user: string;
     description: string;

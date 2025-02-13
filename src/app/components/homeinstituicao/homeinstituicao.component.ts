@@ -7,7 +7,7 @@ import { DataService } from '../../data.service';
 import { KeyWord } from '../../keyword.interface';
 import { Institution } from '../../institution.interface';
 import { OnInit } from '@angular/core';
-import { Router, RouterModule, Routes } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.component";
@@ -15,7 +15,7 @@ import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.compon
 @Component({
   selector: 'app-homeinstituicao',
   standalone: true,
-  imports: [FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent],
+  imports: [FooterComponent, FormsModule, CommonModule, NgSelectModule, NavinstituicaoComponent, RouterLink],
   templateUrl: './homeinstituicao.component.html',
   styleUrl: './homeinstituicao.component.css'
 })
@@ -108,7 +108,7 @@ export class HomeinstituicaoComponent implements OnInit {
       if (success) {
         this.error = '';
         this.success = `Palavra-chave ${data.value.keywordId.name} adicionada com sucesso à sua instituição.`;
-        //this.ngOnInit();
+        this.ngOnInit();
       } else {
         this.success = '';
         this.error = `Erro ao adicionar palavra-chave ${data.value.keywordId.name} à sua instituição.`;
@@ -156,7 +156,7 @@ export class HomeinstituicaoComponent implements OnInit {
       if (success) {
         this.error = '';
         this.success = `Palavra-chave ${data.value.keywordId.name} removida com sucesso da sua instituição.`;
-        //this.ngOnInit();
+        this.ngOnInit();
         this.selectedInstitutionKeyword = null;
       } else {
         this.success = '';

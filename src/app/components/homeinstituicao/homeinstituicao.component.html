@@ -30,7 +30,8 @@
                 <ng-select id="removekeyword" class="custom-ng-select" [(ngModel)]="selectedInstitutionKeyword" [items]="institutionKeywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChangeRemoval($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
                 <button class="btn-pattern mar-cima-1" type="submit">Remover</button>
             </form>
-
+            <p></p>
+            <a routerLink="/criardoacao" ><button class="btn-pattern mar-cima-1" type="submit">Registrar doação</button></a>
         </section>
     </main>
     <app-footer></app-footer>
