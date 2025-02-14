@@ -14,6 +14,7 @@ import { PaginainstituicaoComponent } from './components/paginainstituicao/pagin
 import { PesquisainstituicaoComponent } from './components/pesquisainstituicao/pesquisainstituicao.component';
 import { SobresiteComponent } from './components/sobresite/sobresite.component';
 import { RegistrardoacaoComponent } from './components/registrardoacao/registrardoacao.component';
+import { DoacoesinstituicaoComponent } from './components/doacoesinstituicao/doacoesinstituicao.component';
 
 export const routes: Routes = [
     {
@@ -95,10 +96,14 @@ export const routes: Routes = [
     },
     {
       path: "registrardoacao",
-      title: 'Doações',
+      title: 'Registrar doação',
       component: RegistrardoacaoComponent
+    },
+    {
+      path: "doacoesinstituicao",
+      title: 'Doações',
+      component: DoacoesinstituicaoComponent
     }
-
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

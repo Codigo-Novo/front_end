@@ -6,6 +6,7 @@ import { DataService } from './data.service';
 import { GeolocationService } from './geolocation.service';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     GoogleMapsModule,
     NgSelectModule,
+    NgxPaginationModule,
   ],
   providers: [
     ApiService,

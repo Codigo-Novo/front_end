@@ -1,0 +1,36 @@
+<body>
+    <app-navinstituicao></app-navinstituicao>
+    <main class="c-main">
+        <section class="main-section">
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Doações</h2></div>
+            <h6>Quantidade total de doações registradas: {{ donationsData.total_donations }}</h6>
+            <h6>Quantidade total de doações resgatadas: {{ donationsData.redeemed_donations }}</h6>
+            <h3>Lista de Doações:</h3>
+            <div *ngIf="donationsData.donations.length > 0">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Token</th>
+                      <th>Descrição</th>
+                      <th>Data de Registro</th>
+                      <th>Resgatado</th>
+                      <th>Resgatado por</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let donation of donationsData.donations | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+                      <td class="token-column">{{ donation.token }}</td>
+                      <td class="description-column">{{ donation.description }}</td>
+                      <td class="date-column">{{ donation.created_at | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                      <td>{{ donation.is_redeemed ? 'Sim' : 'Não' }}</td>
+                      <td class="name-column" *ngIf="donation.redeemed_by__first_name">{{ donation.redeemed_by__first_name }}</td>
+                      <td class="name-column" *ngIf="!donation.redeemed_by__first_name">Não resgatado</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+              </div>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

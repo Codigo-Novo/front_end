@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SplashScreenService } from './splashscreen.service';
 
 @Component({
     selector: 'app-root',
@@ -10,6 +11,9 @@ import { RouterOutlet } from '@angular/router';
 })
 
 export class AppComponent {
+
+  constructor(private splashScreenService: SplashScreenService) {}
+
   imgpath: string = 'assets/logo.jpg';  // Caminho da imagem
   title = 'firt_test';
   
