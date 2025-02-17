@@ -58,7 +58,7 @@ export class HomedoadorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.geolocation.getCurrentLocation().then((position) => {
+    /*this.geolocation.getCurrentLocation().then((position) => {
       this.options.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
@@ -82,7 +82,7 @@ export class HomedoadorComponent implements OnInit {
             console.error("Erro: ", error);
           },
         });
-    });
+    });*/
   }
 
   getKeywords(): Promise<KeyWord[]> {

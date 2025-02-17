@@ -1,38 +1,41 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <body>
     <app-navinstituicao></app-navinstituicao>
     
     <main class="c-main">
         <section>
-            <div *ngIf="error" class="error">
+            <div *ngIf="error" class="alert alert-warning" role="alert">
                 {{ error }}
             </div>
-            <div *ngIf="success" class="success">
+            <div *ngIf="success" class="alert alert-success" role="alert">
                 {{ success }}
             </div>
-            <div class="titulo_times d-f"><img class="tam_1" src="chave.png" alt=""><h2>Palavra<br>chave</h2></div>
+            <h2 class="text-center">Palavra chave</h2>
             <form #addKey="ngForm" (ngSubmit)="addKeyWord(addKey)">
                 <label for="addkeyword">Escolha uma palavra-chave para adicionar:</label>
-                <ng-select id="addkeyword" class="custom-ng-select" [(ngModel)]="selectedKeyword" [items]="keywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChange($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
+                <ng-select id="addkeyword" class="caixa-texto-p mar-baixo-1 rounded" [(ngModel)]="selectedKeyword" [items]="keywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChange($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
                 <div *ngIf="selectedKeyword?.id !== -1">
-                    <button class="btn-pattern mar-cima-1" type="submit">Adicionar</button>
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="submit">Adicionar</button></p>
                 </div>
             </form>
             <form #createKey="ngForm" (ngSubmit)="createKeyWord(createKey)">
                 <div *ngIf="selectedKeyword?.id === -1">
                     <label for="otherKeyword">Adicionar nova palavra-chave:</label>
-                    <input type="text" id="otherKeyword" class="form-control" [(ngModel)]="otherKeyword" name="otherKeyword" placeholder="Digite a palavra-chave que deseja adicionar"/>
+                    <input type="text" id="otherKeyword" class="caixa-texto-p mar-baixo-1 rounded" [(ngModel)]="otherKeyword" name="otherKeyword" placeholder="Digite a palavra-chave que deseja adicionar"/>
                     
-                    <button class="btn-pattern mar-cima-1" type="submit">Adicionar</button>
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="submit">Adicionar</button></p>
                 </div>
             </form>
             <form #removeKey="ngForm" (ngSubmit)="removeKeyWord(removeKey)">
                 <label for="removekeyword">Escolha uma palavra-chave para remover:</label>
-                <ng-select id="removekeyword" class="custom-ng-select" [(ngModel)]="selectedInstitutionKeyword" [items]="institutionKeywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChangeRemoval($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
-                <button class="btn-pattern mar-cima-1" type="submit">Remover</button>
+                <ng-select id="removekeyword" class="caixa-texto-p mar-baixo-1 rounded" [(ngModel)]="selectedInstitutionKeyword" [items]="institutionKeywords" bindLabel="name" placeholder="Pesquise ou selecione uma palavra-chave" [searchable]="true" required name="keywordId" (ngModelChange)="onKeywordChangeRemoval($event)" [compareWith]="compareKeywords" [clearable]="true"></ng-select>
+                <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="submit">Remover</button></p>
             </form>
             <p></p>
-            <a routerLink="/registrardoacao" ><button class="btn-pattern mar-cima-1" type="submit">Registrar doação</button></a>
-            <a routerLink="/doacoesinstituicao" ><button class="btn-pattern mar-cima-1" type="submit">Visualizar doações</button></a>
+            <p class="text-center m-0 link-destaque"><a routerLink="/registrardoacao" >Registrar doação</a></p>
+        
+            <p class="text-center m-0 link-destaque"><a routerLink="/doacoesinstituicao" >Visualizar doações</a></p>
         </section>
     </main>
     <app-footer></app-footer>

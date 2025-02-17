@@ -36,7 +36,7 @@ export class HomeinstituicaoComponent implements OnInit {
   constructor(private api: ApiService, private data: DataService, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    try {
+    /*try {
       const next = await this.api.checkInstitution().toPromise();
       this.username = next.username;
       this.institution = await this.getInstitution(next.id);
@@ -48,7 +48,7 @@ export class HomeinstituicaoComponent implements OnInit {
       this.institutionKeywords = this.keywords.filter(item => this.institution!.keywords.includes(item.id));
     } catch (error) {
       this.router.navigate(['/login']);
-    }
+    }*/
   }
   
   getInstitution(id: number): Promise<Institution> {

@@ -9,14 +9,6 @@ body{
     justify-items: center;
     min-height: 100vh;
 }
-.error {
-  color: rgb(255, 57, 57);
-  font-weight: bold;
-}
-.success {
-  color: rgb(2, 163, 10);
-  font-weight: bold;
-}
 .custom-ng-select {
   width: 100%;
   border: 2px solid #007bff;
@@ -29,6 +21,9 @@ body{
 
 .custom-ng-select .ng-select-container .ng-placeholder {
   color: #999;
+}
+.link-destaque{
+  font-size: var(--fonte_m);
 }
 
 ::ng-deep ng-select {

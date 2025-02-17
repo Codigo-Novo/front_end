@@ -8,10 +8,18 @@
     --fonte_gg: 2rem;
     --fonte_gg: 3.2rem;
 }
+@font-face {
+    font-family: hokaplay;
+    src: url(assets/hokaplay-rounded-font/HokaplayRounded-BWn2l.ttf);
+ }
+@font-face {
+    font-family: dosis;
+    src: url(assets/dosis/Dosis-Regular.otf);
+}
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: dosis;
 }
 body{
     background: linear-gradient(140deg, #fff, var(--bluelight1), var(--bluelight2));
@@ -54,19 +62,23 @@ body{
 .bgc-azul{
     background-color: rgba(49, 49, 253, 0.603);
 }
+.f-dosis{
+    font-family: dosis;
+}
 .largura-1{
-    width: 50px;
+    width: 40px;
 }
 .links-inicio{
     width: 100%;
     margin: 0.2rem;
     background-color: var(--gray1);
-    border: outset var(--gray4) 0.1rem;
+    border: outset var(--orangelight) 0.1rem;
     border-radius: 0.25rem;
 }
 .links-inicio:hover{
     background-color: var(--gray2);
     border: inset var(--gray4) 0.1rem;
+    color: var(--bluelight1);
 }
 .links-inicio:focus, .links-inicio.focus {
     background-color: var(--gray3);

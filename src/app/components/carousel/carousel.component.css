@@ -1,37 +1,50 @@
 .carousel-container {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .carousel-image img {
-    width: 100%;
-    display: block;
-    transition: transform 1s ease;
-  }
-  
-  .carousel-controls {
-    position: absolute;
-    bottom: 10px;
-    left: 43%;
-    transform: translateX(-40%);
-    display: flex;
-    color: white;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .carousel-controls button {
-    padding: 5px 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .carousel-controls button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-image img {
+  width: 100%;
+  display: block;
+  transition: transform 1s ease;
+}
+
+.carousel-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 43%;
+  transform: translateX(-40%);
+  display: flex;
+  color: white;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carousel-controls button {
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.carousel-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.carousel-text{
+  white-space: inherit;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  color: white;
+}
+.carousel-text h2{
+  text-align: center;
+}
+.carousel-text h6{
+  text-align: center;
+}
   

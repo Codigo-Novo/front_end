@@ -3,7 +3,7 @@ import { NavinstituicaoComponent } from "../navinstituicao/navinstituicao.compon
 
 @Component({
     selector: 'app-profileinstituicao',
-    imports: [NavinstituicaoComponent],
+    imports: [],
     standalone: true,
     templateUrl: './profileinstituicao.component.html',
     styleUrl: './profileinstituicao.component.css'
