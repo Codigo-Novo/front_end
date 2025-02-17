@@ -68,9 +68,9 @@ th, td {
     text-align: left;
     color: #000; /* Cor preta ou qualquer cor que você deseja para o texto */
     border: 1px solid #ddd;
-    background-color: #fff; /* Cor do fundo da célula */
+    background-color: var(--bluelight1); /* Cor do fundo da célula */
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: var(--bluelight2);
 }

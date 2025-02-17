@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <body>
     <app-navinstituicao></app-navinstituicao>
     <main class="c-main">
@@ -7,7 +9,8 @@
             <h6>Quantidade total de doações resgatadas: {{ donationsData.redeemed_donations }}</h6>
             <h3>Lista de Doações:</h3>
             <div *ngIf="donationsData.donations.length > 0">
-                <table class="table table-bordered">
+              <div class="rounded">
+                <table>
                   <thead>
                     <tr>
                       <th>Token</th>
@@ -28,6 +31,7 @@
                     </tr>
                   </tbody>
                 </table>
+                </div>
                 <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
               </div>
         </section>

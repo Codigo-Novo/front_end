@@ -1,0 +1,22 @@
+<body>
+    <app-navegacao></app-navegacao>
+    <main class="c-main">
+        <section>
+            <div *ngIf="error" class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+            <div *ngIf="success" class="alert alert-success" role="alert">
+                {{ success }}
+            </div>
+            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h1>Resgatar doação</h1></div>
+            <form #signupForm="ngForm">
+
+                <label for="token">Token de doação</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="token" name="token" placeholder="Insira aqui o token de doação" ngModel required>
+
+                <button class="btn btn-outline-secondary mar-cima-1 d-b mar-auto" type="button" (click)="redeemDonation(signupForm)">Resgatar</button>
+            </form>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

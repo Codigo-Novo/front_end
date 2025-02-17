@@ -9,10 +9,6 @@
     --fonte_gg: 3.2rem;
 }
 @font-face {
-    font-family: hokaplay;
-    src: url(assets/hokaplay-rounded-font/HokaplayRounded-BWn2l.ttf);
- }
-@font-face {
     font-family: dosis;
     src: url(assets/dosis/Dosis-Regular.otf);
 }

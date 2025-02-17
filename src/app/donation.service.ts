@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Donation, DonationsResponse } from './donation.interface';
+import { DonationsResponse } from './donation.interface';
 import { catchError, Observable, switchMap, throwError } from 'rxjs';
 
 @Injectable({
@@ -71,6 +71,37 @@ export class DonationService {
                         },
                         error: (error) => {
                             reject(error.error?.message);
+                        }
+                    });
+                }
+            })
+        })
+    }
+
+    redeemToken(token: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        token: token || ''
+                    };
+                    const url = this.apiRoot.concat('donation/redeemToken/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response: any) => {
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error?.error);
                         }
                     });
                 }
