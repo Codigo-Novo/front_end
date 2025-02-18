@@ -74,7 +74,7 @@ body{
 .links-inicio:hover{
     background-color: var(--gray2);
     border: inset var(--gray4) 0.1rem;
-    color: var(--bluelight1);
+    color: var(--orangedark);
 }
 .links-inicio:focus, .links-inicio.focus {
     background-color: var(--gray3);

@@ -12,9 +12,9 @@
             <form #signupForm="ngForm">
 
                 <label for="token">Token de doação</label>
-                <input class="caixa-texto-p mar-baixo-1" type="text" id="token" name="token" placeholder="Insira aqui o token de doação" ngModel required>
+                <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="token" name="token" placeholder="Insira aqui o token de doação" ngModel required>
 
-                <button class="btn btn-outline-secondary mar-cima-1 d-b mar-auto" type="button" (click)="redeemDonation(signupForm)">Resgatar</button>
+                <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1 d-b mar-auto" type="button" (click)="redeemDonation(signupForm)">Resgatar</button></p>
             </form>
         </section>
     </main>

@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     DataService,
     GeolocationService,
   ],
+
 })
 
 export class AppModule {}

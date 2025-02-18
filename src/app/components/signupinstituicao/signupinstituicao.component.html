@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <body>
     <app-header></app-header>
     <main class="c-main">
@@ -16,7 +18,7 @@
                 <input (input)="onInput($event)" class="caixa-texto-p mar-baixo-1 rounded" type="text" id="address" name="address" placeholder="Digite aqui o seu endereço" ngModel required email>
                 <div ng-model="map" id="map-canvas" style="width: 600px; height: 400px;"></div>     
 
-                <button class="btn-pattern mar-cima-1" type="submit">Finalizar</button>
+                <p class="text-center"><button class="btn btn-outline-primary mar-cima-1" type="submit">Finalizar</button></p>
             </form>
             <p></p> 
         </section>
