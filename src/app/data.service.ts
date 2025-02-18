@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, switchMap } from 'rxjs';
 import { Institution } from './institution.interface';
 import { KeyWord } from './keyword.interface';
+import { User } from './user.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -19,6 +20,10 @@ export class DataService {
 
     getInstitution(id: number): Observable<Institution> {
         return this.http.get<Institution>(this.apiRoot.concat(`cadastro/instituicao/${id}`));
+    }
+
+    getUser(id: number): Observable<User> {
+        return this.http.get<User>(this.apiRoot.concat(`cadastro/usuario/${id}`));
     }
 
     getKeyWords(): Observable<KeyWord[]>{

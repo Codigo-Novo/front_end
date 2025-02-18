@@ -1,0 +1,71 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+label {
+    display: block;
+    width: 500px;
+}
+
+.caixa-texto-p {
+    width: 100%;
+    font-size: 17px;
+    border-color: var(--bluelight2);
+}
+
+.c-main {
+    width: 600px;
+    margin: auto;
+    padding-top: 1.5rem;
+    justify-items: center;
+    min-height: 100vh;
+}
+
+.error {
+    color: rgb(255, 57, 57);
+    font-weight: bold;
+}
+
+.success {
+    color: rgb(2, 163, 10);
+    font-weight: bold;
+}
+.description-column{
+  min-width: 600px;
+  max-width: 600px; 
+  overflow: ellipsis; 
+  text-overflow: ellipsis;
+}
+.date-column{
+  min-width: 170px;
+  max-width: 200px; 
+  overflow: ellipsis; 
+  text-overflow: ellipsis;
+}
+.name-column{
+  min-width: 150px;
+  max-width: 150px; 
+  overflow: ellipsis; 
+  text-overflow: ellipsis;
+}
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    color: #000; /* Cor preta ou qualquer cor que você deseja para o texto */
+    border: 1px solid #ddd;
+    background-color: var(--bluelight1); /* Cor do fundo da célula */
+}
+
+th {
+    background-color: var(--bluelight2);
+}
+.link-destaque{
+    font-size: var(--fonte_m);
+}

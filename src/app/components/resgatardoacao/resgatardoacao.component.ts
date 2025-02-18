@@ -38,12 +38,12 @@ export class ResgatardoacaoComponent implements OnInit {
 
   redeemDonation(data: NgForm) { 
     if (!data || !data.value) {
-      this.success = '';
+      this.success = null;
       this.error = "O formulário é vazio ou inválido.";
       return;
     }
     if (data.value.token == '') {
-      this.success = '';
+      this.success = null;
       this.error = 'Preencha o campo do token.';
       return;
     }

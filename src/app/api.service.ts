@@ -203,7 +203,6 @@ export class ApiService {
                         headers: { 'X-CSRFToken': parsedData.csrfToken } 
                     }).subscribe({
                         next: (response) => {
-                            console.log("Usuário deslogado com sucesso.");
                             resolve();
                         },
                         error: (error) => {
@@ -215,6 +214,37 @@ export class ApiService {
                     console.error("Erro ao obter csrfToken.");
                 }
             });
+        })
+    }
+
+    deleteAccount(password: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        password: password || ''
+                    };
+                    const url = this.apiRoot.concat('cadastro/deleteUser/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response: any) => {
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error?.error);
+                        }
+                    });
+                }
+            })
         })
     }
 

@@ -1,1 +1,46 @@
-<p>profiledoador works!</p>
+<body>
+    <app-navegacao></app-navegacao>
+    <main class="c-main">
+        <section class="main-section">
+            <div *ngIf="error" class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+            <div *ngIf="success" class="alert alert-success" role="alert">
+                {{ success }}
+            </div>
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Perfil</h2></div>
+            <p>Nome de usuário: {{ user!.username }}</p>
+            <p>Nome: {{ user!.first_name }}</p>
+            <p>E-mail: {{ user!.email }}</p>
+            <p class="m-0 link-destaque"><a routerLink="/doacoesdoador" >Minhas doações</a></p>
+            <form #update="ngForm">
+                <label for="username">Nome de usuário</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="username" name="username" placeholder="Digite seu nome de usuário" [(ngModel)]="userUsername">
+
+                <label for="name">Nome</label>
+                <input class="caixa-texto-p mar-baixo-1" type="text" id="name" name="name" placeholder="Digite seu nome" [(ngModel)]="userName">
+
+                <label for="email">E-mail</label>
+                <input class="caixa-texto-p mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" [(ngModel)]="userEmail">
+
+                <label for="password">Senha atual</label>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha atual" ngModel>
+                
+                <label for="newpassword">Nova senha</label>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="newpassword" name="newpassword" placeholder="Digite sua nova senha" ngModel>
+
+                <label for="confirmpassword">Confirmar senha</label>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="confirmpassword" name="confirmpassword" placeholder="Digite sua nova senha novamente" ngModel>
+
+                <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1 d-b mar-auto" type="button" (click)="updateAccount(update)">Atualizar seus dados</button></p>
+            </form>
+            <form #data="ngForm">
+                <label for="password">Senha</label>
+                <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" ngModel>
+                
+                <p class="text-center"><button class="btn btn-outline-danger mar-cima-1 d-b mar-auto" type="button" (click)="deleteAccount(data)">Apagar sua conta</button></p>
+            </form>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

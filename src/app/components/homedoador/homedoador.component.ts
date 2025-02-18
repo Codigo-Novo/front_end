@@ -6,7 +6,7 @@ import { OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { DataService } from '../../data.service';
 import { GeolocationService } from '../../geolocation.service';
-import { Router, RouterLink, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Institution } from '../../institution.interface';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { KeyWord } from '../../keyword.interface';
@@ -19,7 +19,7 @@ import { filter } from 'rxjs';
 
   selector: 'app-homedoador',
   standalone: true,
-  imports: [NavegacaoComponent, FooterComponent, WordCloudComponent, GoogleMapsModule, NgSelectModule, CommonModule, FormsModule, RouterLink],
+  imports: [NavegacaoComponent, FooterComponent, WordCloudComponent, GoogleMapsModule, NgSelectModule, CommonModule, FormsModule],
   templateUrl: './homedoador.component.html',
   styleUrl: './homedoador.component.css'
 })

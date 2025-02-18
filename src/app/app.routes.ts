@@ -16,6 +16,7 @@ import { SobresiteComponent } from './components/sobresite/sobresite.component';
 import { RegistrardoacaoComponent } from './components/registrardoacao/registrardoacao.component';
 import { DoacoesinstituicaoComponent } from './components/doacoesinstituicao/doacoesinstituicao.component';
 import { ResgatardoacaoComponent } from './components/resgatardoacao/resgatardoacao.component';
+import { DoacoesdoadorComponent } from './components/doacoesdoador/doacoesdoador.component';
 
 export const routes: Routes = [
     {
@@ -109,6 +110,11 @@ export const routes: Routes = [
       path: "resgatardoacao",
       title: 'Resgatar doação',
       component: ResgatardoacaoComponent
+    },
+    {
+      path: "doacoesdoador",
+      title: 'Doações',
+      component: DoacoesdoadorComponent
     }
 ];
 @NgModule({

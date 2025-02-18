@@ -123,4 +123,19 @@ export class DonationService {
             })
         );
     }
+
+    getDonatorDonations(): Observable<DonationsResponse> {
+        return this.http.get<{ csrfToken: string }>(this.apiRoot.concat('csrf/'), { withCredentials: true }).pipe(
+            switchMap(response => {
+                if (!response.csrfToken) {
+                    throw new Error("CSRF token not found");
+                }
+                return this.http.get<DonationsResponse>(this.apiRoot.concat('donation/getDonatorDonations/'), { withCredentials: true });
+            }),
+            catchError(error => {
+                console.error("Error fetching donations:", error);
+                return throwError(() => error);
+            })
+        );
+    }
 }
