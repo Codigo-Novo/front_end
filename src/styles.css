@@ -67,13 +67,13 @@ body{
 .links-inicio{
     width: 100%;
     margin: 0.2rem;
-    background: linear-gradient(to top, #eeeeee, var(--gray1), var(--gray2));
+    background-color: var(--gray1);
     border: outset var(--orangelight) 0.1rem;
     border-radius: 0.25rem;
     transition: 0.25s;
 }
 .links-inicio:hover{
-    background: linear-gradient(to bottom, #eeeeee, var(--gray1), var(--gray2));
+    background-color: var(--gray2);
     border: inset var(--gray4) 0.1rem;
     color: var(--orangedark);
     transition: 0.25s;
