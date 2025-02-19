@@ -1,6 +1,10 @@
 a{
     color: white;
 }
+a:hover{
+    color: white;
+    font-weight: bolder;
+}
 footer{
     background-color: var(--gray4); 
     color: white; 
