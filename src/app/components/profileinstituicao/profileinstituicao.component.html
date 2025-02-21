@@ -9,11 +9,8 @@
             <p>Nome de usuário: {{ user!.username }}</p>
             <p>Nome da instituição: {{ user!.first_name }}</p>
             <p>E-mail: {{ user!.email }}</p>
-            <!-- <p>Descrição: {{ institution!.description }}</p>
-            <p>CPF/CNPJ: {{ institution!.cpforcnpj }}</p>
-            <p>Localização:</p>
-            <div ng-model="map" id="map-canvas" style="width: 400px; height: 300px;"></div>  -->
             <p class="text-center"><button (click)="openModalUpdate()" class="btn btn-outline-primary my-2 my-sm-0">Atualizar meus dados</button></p>
+            <p class="text-center"><button class="btn btn-outline-primary my-2 my-sm-0" routerLink="/editaccount">Atualizar os dados da instituição</button></p>
             
             <app-modal [showModal]="showModalUpdate" (closeModal)="closeModalUpdate()">
                 <div *ngIf="errorUpdate" class="alert alert-warning" role="alert">

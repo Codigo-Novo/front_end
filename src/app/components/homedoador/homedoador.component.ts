@@ -66,7 +66,8 @@ export class HomedoadorComponent implements OnInit {
       this.data.getInstitutions().subscribe({
         next: async (data: Institution[]) => {
           this.keywords = await this.getKeywords();
-          this.homeMap(data);
+          const filteredData = data.filter(institution => institution.is_active);
+          this.homeMap(filteredData);
         },
         error: (error) => {
           console.error("Erro: ", error);
@@ -76,7 +77,8 @@ export class HomedoadorComponent implements OnInit {
         this.data.getInstitutions().subscribe({
           next: async (data: Institution[]) => {
             this.keywords = await this.getKeywords();
-            this.homeMap(data);
+            const filteredData = data.filter(institution => institution.is_active);
+            this.homeMap(filteredData);
           },
           error: (error) => {
             console.error("Erro: ", error);

@@ -4,7 +4,7 @@ body {
 }
 
 label {
-    display: block;
+    display: flex;
     width: 500px;
 }
 
@@ -33,15 +33,15 @@ label {
 }
 
 .token-column {
-  max-width: 300px; 
+  max-width: 270px; 
   white-space: normal; 
   overflow: visible; 
   word-wrap: break-word; 
   user-select: text; 
 }
 .description-column{
-  min-width: 400px;
-  max-width: 400px; 
+  min-width: 350px;
+  max-width: 350px; 
   overflow: ellipsis; 
   text-overflow: ellipsis;
 }
