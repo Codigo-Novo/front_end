@@ -4,7 +4,7 @@ body {
 }
 
 label {
-    display: block;
+    display: flex;
     width: 500px;
 }
 
@@ -22,7 +22,7 @@ label {
     min-height: 100vh;
 }
 
-.error {
+.red {
     color: rgb(255, 57, 57);
     font-weight: bold;
 }

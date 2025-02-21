@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GeolocationService } from '../../geolocation.service';
 import { OnInit } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-signupinstituicao',
-    imports: [FooterComponent, HeaderComponent, FormsModule, GoogleMapsModule],
+    imports: [FooterComponent, HeaderComponent, FormsModule, GoogleMapsModule, NgIf],
     standalone: true,
     templateUrl: './signupinstituicao.component.html',
     styleUrl: './signupinstituicao.component.css'
@@ -19,6 +20,9 @@ export class SignupinstituicaoComponent implements OnInit {
   
   error: string = '';
   address: string = '';
+
+  loading: boolean = false;
+
   coordinates: { lat: number, lng: number } | null = null;
   map: google.maps.Map | null = null;
   markers: google.maps.Marker[] = [];
@@ -77,13 +81,21 @@ export class SignupinstituicaoComponent implements OnInit {
     });
   };
 
-  submitData(data: NgForm) {
+  async submitData(data: NgForm) {
+    this.loading = true;
     if (!data || !data.value) {
-      console.error('O formulário é inválido ou vazio:', data);
+      this.error = 'O formulário é inválido ou vazio.';
+      this.loading = false;
+      return;
+    }
+    if (!data.value.description || !data.value.cpforcnpj || !data.value.address) {
+      this.error = 'Preencha todos os campos para finalizar seu cadastro.';
+      this.loading = false;
       return;
     }
     if (!this.address || this.address.trim() === '') {
-      console.error('Endereço inválido.');
+      this.error = 'Endereço inválido ou vazio.';
+      this.loading = false;
       return;
     }
     const post_data = {
@@ -92,12 +104,12 @@ export class SignupinstituicaoComponent implements OnInit {
       lat: this.coordinates!.lat,
       long: this.coordinates!.lng,
     }
-    this.api.createInstitution(post_data).then((success) => {
-      if (success) {
+    await this.api.createInstitution(post_data).then((success) => {
+        this.loading = false;
         this.router.navigate(['/homeinstituicao']);
-      } else {
-        console.error('Erro ao criar conta.');
-      }
-    });
+    }).catch((error) => {
+      this.loading = false;
+      console.log(error);
+  });
   }
 }

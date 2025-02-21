@@ -2,7 +2,10 @@
     <app-header></app-header>
     <main class="c-main">
         <section>
-            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Cadastre-se</h2></div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Cadastre-se</h2></div>
            
             <form #signupForm="ngForm" (ngSubmit)="submitData(signupForm)">
 
@@ -20,13 +23,29 @@
 
                 <label for="confirm">Confirmar Senha</label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="password" id="confirm" name="confirm" placeholder="Digite sua senha novamente" ngModel required>
-
-                <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b" type="button" (click)="donator(signupForm)">Cadastrar como DOADOR</button></p>
-                <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b" type="button" (click)="institution(signupForm)">Cadastrar como INSTITUIÇÃO</button></p>
                 
+                <div *ngIf="!loadingDonator">
+                    <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b" type="button" (click)="donator(signupForm)">Cadastrar como DOADOR</button></p>
+                </div>
+                <div *ngIf="loadingDonator">
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span class="visually-hidden" role="status">Carregando...</span>
+                    </button></p>
+                </div>
+
+                <div *ngIf="!loadingInstitution">
+                    <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b" type="button" (click)="institution(signupForm)">Cadastrar como INSTITUIÇÃO</button></p>
+                </div>
+                <div *ngIf="loadingInstitution">
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span class="visually-hidden" role="status">Carregando...</span>
+                    </button></p>
+                </div>
             </form>
 
-            <p class="text-center m-0"><a href="#">Já tenho conta</a></p>
+            <p class="text-center m-0"><a routerLink="/login">Já tenho uma conta, quero entrar</a></p>
 
         </section>
     </main>

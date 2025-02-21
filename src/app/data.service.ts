@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, of, switchMap } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
 import { Institution } from './institution.interface';
 import { KeyWord } from './keyword.interface';
 import { User } from './user.interface';
@@ -20,6 +20,22 @@ export class DataService {
 
     getInstitution(id: number): Observable<Institution> {
         return this.http.get<Institution>(this.apiRoot.concat(`cadastro/instituicao/${id}`));
+    }
+
+    getInstitutionByUser(): Observable<Institution> {
+        return this.http.get<{ csrfToken: string }>(this.apiRoot.concat('csrf/'), { withCredentials: true }).pipe(
+            switchMap(csrfResponse => {
+                const csrfToken = csrfResponse.csrfToken;
+                if (!csrfToken) {
+                    throw new Error('CSRF token não encontrado nos cookies.');
+                }
+                return this.http.get<Institution>(`${this.apiRoot}cadastro/getInstitutionByUser/`, { withCredentials: true, headers: { 'X-CSRFToken': csrfToken } });
+            }),
+            catchError(err => {
+                console.error('Erro ao buscar instituição', err);
+                return throwError(() => err);
+            })
+        );
     }
 
     getUser(id: number): Observable<User> {

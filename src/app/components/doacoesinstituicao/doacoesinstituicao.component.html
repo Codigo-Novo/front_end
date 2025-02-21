@@ -7,6 +7,7 @@
             <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Doações</h2></div>
             <h6>Quantidade total de doações registradas: {{ donationsData.total_donations }}</h6>
             <h6>Quantidade total de doações resgatadas: {{ donationsData.redeemed_donations }}</h6>
+            <p class="m-0 link-destaque"><a routerLink="/registrardoacao" >Registrar doação</a></p>
             <div *ngIf="donationsData.donations.length > 0">
               <h3>Lista de Doações:</h3>
               <div class="rounded">

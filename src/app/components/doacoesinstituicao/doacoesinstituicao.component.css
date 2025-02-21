@@ -74,3 +74,7 @@ th, td {
 th {
     background-color: var(--bluelight2);
 }
+.link-destaque{
+    font-size: var(--fonte_m);
+}
+

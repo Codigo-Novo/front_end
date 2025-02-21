@@ -1,7 +1,7 @@
 import { NavinstituicaoComponent } from '../navinstituicao/navinstituicao.component';
 import { FooterComponent } from '../footer/footer.component';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { DonationsResponse } from '../../donation.interface';
@@ -12,7 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-doacoesinstituicao',
   standalone: true,
-  imports: [NavinstituicaoComponent, FooterComponent, CommonModule, NgxPaginationModule],
+  imports: [NavinstituicaoComponent, FooterComponent, CommonModule, NgxPaginationModule, RouterLink],
   templateUrl: './doacoesinstituicao.component.html',
   styleUrl: './doacoesinstituicao.component.css'
 })

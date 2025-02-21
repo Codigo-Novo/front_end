@@ -23,7 +23,7 @@ export class NavinstituicaoComponent {
   }
   constructor(private api: ApiService, private router: Router) { }
   async logout() {
-    //await this.api.logout();
+    await this.api.logout();
     this.router.navigate(['/']);
   }
 }

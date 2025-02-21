@@ -4,7 +4,11 @@
     <app-header></app-header>
     <main class="c-main">
         <section>
-            <div class="d-f v-center"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Cadastre-se</h2></div>
+            <div *ngIf="error" class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            
+            <div class="d-f v-center"><h2>Finalize seu cadastro como instituição</h2></div>
             
             <form #signupInstitutionForm="ngForm" (ngSubmit)="submitData(signupInstitutionForm)">
 
@@ -12,13 +16,21 @@
                 <textarea class="caixa-texto-p mar-baixo-1 rounded" id="description" name="description" placeholder="Descreva sua instituição. Ex: dados para contato, endereço, entre outros.     Estes dados aparecerão para os doadores quando visualizarem a página da sua instituição." ngModel required rows=6 cols=55></textarea>
                 
                 <label for="cpfcnpj">CPF/CNPJ</label>
-                <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="cpforcnpj" name="cpforcnpj" placeholder="CPF ou CNPJ da instituição" ngModel required email>
+                <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="cpforcnpj" name="cpforcnpj" placeholder="CPF ou CNPJ da instituição" ngModel required>
 
                 <label for="location">Endereço</label>
-                <input (input)="onInput($event)" class="caixa-texto-p mar-baixo-1 rounded" type="text" id="address" name="address" placeholder="Digite aqui o seu endereço" ngModel required email>
+                <input (input)="onInput($event)" class="caixa-texto-p mar-baixo-1 rounded" type="text" id="address" name="address" placeholder="Digite aqui o seu endereço" ngModel required>
                 <div ng-model="map" id="map-canvas" style="width: 600px; height: 400px;"></div>     
-
-                <p class="text-center"><button class="btn btn-outline-primary mar-cima-1" type="submit">Finalizar</button></p>
+                
+                <div *ngIf="!loading">
+                    <p class="text-center"><button class="btn btn-outline-primary mar-cima-1" type="submit">Finalizar</button></p>
+                </div>
+                <div *ngIf="loading">
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span class="visually-hidden" role="status">Carregando...</span>
+                    </button></p>
+                </div>
             </form>
             <p></p> 
         </section>

@@ -7,7 +7,7 @@
             <div *ngIf="error" class="alert alert-danger" role="alert">
                 {{ error }}
             </div>
-            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Login</h2></div>
+            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Login</h2></div>
             <form #loginForm="ngForm" (ngSubmit)="submitData(loginForm)">
            
                 <label for="username">Nome de usuário</label>
@@ -16,13 +16,17 @@
                 <label for="password">Senha</label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="password" id="password" name="password" placeholder="Digite sua senha" required ngModel>
             
-    
-                <p class="text-center"><button class="btn btn-outline-primary mar-cima-1" type="submit">Entrar</button></p>
-
+                <div *ngIf="!loading">
+                    <p class="text-center"><button class="btn btn-outline-primary mar-cima-1" type="submit" id="enter-button">Entrar</button></p>
+                </div>
+                <div *ngIf="loading">
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span class="visually-hidden" role="status">Carregando...</span>
+                    </button></p>
+                </div>
             </form>
-            <p class="text-center m-0"><a href="#" >Criar conta</a></p>
-
-            <p class="text-center m-0"><a href="#" >Esqueci a senha</a></p>
+            <p class="text-center m-0"><a routerLink="/signup">Ainda não tem uma conta? Crie sua conta</a></p>
         </section>
     </main>
     <app-footer></app-footer>
