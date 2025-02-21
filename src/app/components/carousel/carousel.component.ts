@@ -9,7 +9,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class CarouselComponent implements OnInit, OnDestroy {
 
   // Imagens ou itens do carousel
-  images = ['img_doacao.png','aperto_mao.png'];
+  images = ['img_doacao.png','aperto_mao.png', 'alimentos.jpg', 'sangue.jpg'];
   
   currentIndex = 0;
   intervalId: any;

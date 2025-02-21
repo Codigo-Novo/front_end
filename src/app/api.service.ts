@@ -10,7 +10,7 @@ export class ApiService {
 
     constructor(private http: HttpClient) { } 
 
-    createUser(data: { username: string, name: string, email: string; password: string }) : Promise<Boolean> {
+    createUser(data: { username: string, name: string, email: string; password: string }) : Promise<String> {
         return new Promise((resolve, reject) => {
             this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
                 next: (response) => {
@@ -19,7 +19,7 @@ export class ApiService {
                     const parsedData = JSON.parse(stringcsrfToken);
                     if (!parsedData.csrfToken) {
                         console.error('CSRF token não encontrado nos cookies.');
-                        resolve(false);
+                        reject('Erro interno');
                         return;
                     }
                     const post_data = {
@@ -34,13 +34,11 @@ export class ApiService {
                         headers: { 'X-CSRFToken': parsedData.csrfToken }
                     }).subscribe({
                         next: async (response) => {
-                            console.log('Resposta da API:', response);
                             await this.login(data);
-                            resolve(true);
+                            resolve('Sucesso ao criar conta!');
                         },
                         error: (error) => {
-                            console.error('Erro no POST:', error.error)
-                            resolve(false);
+                            reject(error.error);
                         }
                     });
                 }
@@ -62,7 +60,6 @@ export class ApiService {
                 }
                 const url = this.apiRoot.concat('cadastro/setUserDonator/');
                 const post_data = {
-
                     username: username,
                 }
 
@@ -114,7 +111,7 @@ export class ApiService {
         })
     }
 
-    createInstitution(data: { description: string, cpforcnpj: string, lat: number, long: number}) : Promise<boolean> {
+    createInstitution(data: { description: string, cpforcnpj: string, lat: number, long: number}) : Promise<string> {
         return new Promise((resolve, reject) => {
             this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
                 next: (response) => {
@@ -122,8 +119,7 @@ export class ApiService {
                     const stringcsrfToken = JSON.stringify(csrfTokens);
                     const parsedData = JSON.parse(stringcsrfToken);
                     if (!parsedData.csrfToken) {
-                        console.error('CSRF token não encontrado nos cookies.');
-                        resolve(false);
+                        reject('Erro interno.');
                         return;
                     }
                     const post_data = {
@@ -138,12 +134,10 @@ export class ApiService {
                         headers: { 'X-CSRFToken': parsedData.csrfToken }
                     }).subscribe({
                         next: (response) => {
-                            console.log('Resposta da API:', response);
-                            resolve(true);
+                            resolve('Sucesso ao finalizar cadastro da instituição.');
                         },
                         error: (error) => {
-                            console.error('Erro no POST:', error.error)
-                            resolve(false);
+                            reject(error.error);
                         }
                     });
                 }
@@ -203,7 +197,6 @@ export class ApiService {
                         headers: { 'X-CSRFToken': parsedData.csrfToken } 
                     }).subscribe({
                         next: (response) => {
-                            console.log("Usuário deslogado com sucesso.");
                             resolve();
                         },
                         error: (error) => {
@@ -215,6 +208,137 @@ export class ApiService {
                     console.error("Erro ao obter csrfToken.");
                 }
             });
+        })
+    }
+
+    updateAccount(data: { username: string, name: string, email: string, id: number}): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        username: data.username || '',
+                        first_name: data.name || '',
+                        email: data.email || '',
+                    };
+                    const url = this.apiRoot.concat(`cadastro/usuario/${data.id}/`);
+                    this.http.patch(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response: any) => {
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error);
+                        }
+                    });
+                }
+            })
+        })
+    }
+
+    verifyPassword(password: string): Promise<string> { 
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        password: password || '',
+                    };
+                    const url = this.apiRoot.concat(`cadastro/verifyPassword/`);
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response: any) => {
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error);
+                        }
+                    });
+                }
+            })
+        })
+    }
+
+    updatePassword(data: { username: string, password: string, id: number}): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        password: data.password || '',
+                    };
+                    const url = this.apiRoot.concat(`cadastro/usuario/${data.id}/`);
+                    this.http.patch(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: async (response: any) => {
+                            const login = {
+                                username: data.username || '',
+                                password: data.password || '',
+                            };
+                            await this.login(login);
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error);
+                        }
+                    });
+                }
+            })
+        })
+    }
+
+    deleteAccount(password: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        password: password || ''
+                    };
+                    const url = this.apiRoot.concat('cadastro/deleteUser/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response: any) => {
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error?.error);
+                        }
+                    });
+                }
+            })
         })
     }
 

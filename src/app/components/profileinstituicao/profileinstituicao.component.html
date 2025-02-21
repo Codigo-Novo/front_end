@@ -1,0 +1,94 @@
+<body>
+    <app-navinstituicao></app-navinstituicao>
+    <main class="c-main">
+        <section class="main-section">  
+            <div *ngIf="success" class="alert alert-success" role="alert">
+                {{ success }}
+            </div>
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Perfil</h2></div>
+            <p>Nome de usuário: {{ user!.username }}</p>
+            <p>Nome da instituição: {{ user!.first_name }}</p>
+            <p>E-mail: {{ user!.email }}</p>
+            <!-- <p>Descrição: {{ institution!.description }}</p>
+            <p>CPF/CNPJ: {{ institution!.cpforcnpj }}</p>
+            <p>Localização:</p>
+            <div ng-model="map" id="map-canvas" style="width: 400px; height: 300px;"></div>  -->
+            <p class="text-center"><button (click)="openModalUpdate()" class="btn btn-outline-primary my-2 my-sm-0">Atualizar meus dados</button></p>
+            
+            <app-modal [showModal]="showModalUpdate" (closeModal)="closeModalUpdate()">
+                <div *ngIf="errorUpdate" class="alert alert-warning" role="alert">
+                    {{ errorUpdate }}
+                </div>
+                <div *ngIf="!changePassword">
+                    <h2>Atualizar meus dados</h2>
+                    <form #update="ngForm">
+                        <label for="username">Nome de usuário<span class="red">*</span></label>
+                        <input class="caixa-texto-p mar-baixo-1" type="text" id="username" name="username" placeholder="Digite seu nome de usuário" [(ngModel)]="user!.username">
+        
+                        <label for="name">Nome<span class="red">*</span></label>
+                        <input class="caixa-texto-p mar-baixo-1" type="text" id="name" name="name" placeholder="Digite seu nome" [(ngModel)]="user!.first_name">
+        
+                        <label for="email">E-mail<span class="red">*</span></label>
+                        <input class="caixa-texto-p mar-baixo-1" type="email" id="email" name="email" placeholder="Digite seu e-mail" [(ngModel)]="user!.email">
+                        
+                        <p class="text-center"><button (click)="closeModalUpdate()" class="btn btn-outline-secondary mar-cima-1">Voltar</button></p>
+                        <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b mar-auto" type="button" (click)="updateAccount(update)">Atualizar meus dados</button></p>
+                    </form>
+                    <button class="btn btn-outline-primary mar-cima-1" (click)="changeForm()">Quero atualizar minha senha</button>
+                </div>
+                <div *ngIf="changePassword">
+                    <h2>Atualizar minha senha</h2>
+                    <form #password="ngForm">
+                        <label for="password">Senha atual<span class="red">*</span></label>
+                        <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha atual" ngModel>
+                        
+                        <label for="newpassword">Nova senha<span class="red">*</span></label>
+                        <input class="caixa-texto-p mar-baixo-1" type="password" id="newpassword" name="newpassword" placeholder="Digite sua nova senha" ngModel>
+        
+                        <label for="confirmpassword">Confirmar senha<span class="red">*</span></label>
+                        <input class="caixa-texto-p mar-baixo-1" type="password" id="confirmpassword" name="confirmpassword" placeholder="Digite sua nova senha novamente" ngModel>
+    
+                        <p class="text-center"><button (click)="closeModalUpdate()" class="btn btn-outline-secondary mar-cima-1">Voltar</button></p>
+                        <div *ngIf="!loadingPassword">
+                            <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b mar-auto" type="button" (click)="updatePassword(password)">Atualizar minha senha</button></p>
+                        </div>
+                        <div *ngIf="loadingPassword">
+                            <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                <span class="visually-hidden" role="status">Carregando...</span>
+                            </button></p>
+                        </div>
+                    </form>
+                    <button class="btn btn-outline-primary mar-cima-1" (click)="changeForm()">Quero atualizar meus dados</button>
+                </div>
+            </app-modal>
+
+            <p class="text-center"><button (click)="openModalDelete()" class="btn btn-outline-danger my-2 my-sm-0">Apagar minha conta</button></p>
+
+            <app-modal [showModal]="showModalDelete" (closeModal)="closeModalDelete()">
+                <div *ngIf="errorDelete" class="alert alert-warning" role="alert">
+                    {{ errorDelete }}
+                </div>
+                <h2>Confirmação!</h2>
+                <p>Tem certeza que deseja apagar sua conta? Esta ação é irrerversível! Digite sua senha para confirmar.</p>
+                <form #data="ngForm">
+                    <label for="password">Senha<span class="red">*</span></label>
+                    <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha para confirmar" ngModel required>
+                  
+                    <button (click)="closeModalDelete()" class="btn btn-outline-secondary mar-cima-1 ">Voltar</button>
+                    <div *ngIf="!loadingDelete">
+                        <p class="text-center"><button class="btn btn-outline-danger mar-cima-1" type="button" (click)="deleteAccount(data)">Apagar minha conta</button></p>
+                    </div>
+                    <div *ngIf="loadingDelete">
+                        <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                            <span class="visually-hidden" role="status">Carregando...</span>
+                        </button></p>
+                    </div>
+                </form>
+            </app-modal>
+            
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

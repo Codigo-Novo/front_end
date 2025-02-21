@@ -1,26 +1,32 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <body>
     <app-header></app-header>
     <main class="c-main">
         <section>
-            <div *ngIf="error" class="error">
+            <div *ngIf="error" class="alert alert-danger" role="alert">
                 {{ error }}
             </div>
-            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Login</h2></div>
+            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Login</h2></div>
             <form #loginForm="ngForm" (ngSubmit)="submitData(loginForm)">
            
                 <label for="username">Nome de usuário</label>
-                <input class="caixa-texto-p mar-baixo-1" type="username" id="username" name="username" placeholder="Digite seu nome de usuário" required ngModel>
+                <input class="caixa-texto-p mar-baixo-1 rounded" type="username" id="username" name="username" placeholder="Digite seu nome de usuário" required ngModel>
 
                 <label for="password">Senha</label>
-                <input class="caixa-texto-p mar-baixo-1" type="password" id="password" name="password" placeholder="Digite sua senha" required ngModel>
+                <input class="caixa-texto-p mar-baixo-1 rounded" type="password" id="password" name="password" placeholder="Digite sua senha" required ngModel>
             
-    
-                <button class="btn-pattern mar-cima-1" type="submit">Entrar</button>
-
+                <div *ngIf="!loading">
+                    <p class="text-center"><button class="btn btn-outline-primary mar-cima-1" type="submit" id="enter-button">Entrar</button></p>
+                </div>
+                <div *ngIf="loading">
+                    <p class="text-center"><button class="btn btn-outline-secondary mar-cima-1" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span class="visually-hidden" role="status">Carregando...</span>
+                    </button></p>
+                </div>
             </form>
-            <a href="#" class="have-account">Criar conta</a><br>
-
-            <a href="#" class="forgot-password">Esqueci a senha</a>
+            <p class="text-center m-0"><a routerLink="/signup">Ainda não tem uma conta? Crie sua conta</a></p>
         </section>
     </main>
     <app-footer></app-footer>

@@ -18,8 +18,8 @@ export class WordCloudComponent implements AfterViewInit {
   countWords: number[] = [];
   mapCountWords: number[] = [];
   words: [string, number][] = [];
-  colors: string[] = ['darkred', 'blue', 'green', 'darkgreen', 'orange', 'indigo', 'magenta', 'purple', 'cyan', 'hotpink'];
-  n: number = 10;
+  colors: string[] = ['darkred', 'blue', 'green', 'darkgreen', 'orange', 'indigo', 'magenta', 'purple', 'cyan', 'hotpink', 'darkred', 'blue', 'green', 'darkgreen', 'orange', 'indigo', 'magenta', 'purple', 'cyan', 'hotpink', 'darkred', 'blue', 'green', 'darkgreen', 'orange'];
+  n: number = 25;
   min: number = 25;
   max: number = 80;
 

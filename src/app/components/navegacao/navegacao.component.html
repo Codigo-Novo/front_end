@@ -1,8 +1,20 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <nav class="navbar d-f navbar-light bg-light">
-    <a class="navbar-brand" href="#"><h3><img class="largura-1" src="logopng.png" alt="">Apoio a Doação</h3></a>
-    <div>
+    <a class="navbar-brand" routerLink="/"><h3><img class="largura-1" src="logopng.png" alt="">Apoio a Doação</h3></a>
+    <div *ngIf="!logged_in">
+      <button routerLink="/login" class="btn btn-outline-primary my-2 my-sm-0 mar-r-l">Entrar</button>
+      <button routerLink="/signup" class="btn btn-outline-primary my-2 my-sm-0 mar-r-l">Cadastre-se</button>
+      <button routerLink="/sobresite" class="btn btn-outline-primary my-2 my-sm-0 mar-r-l">Sobre o site</button>
+    </div>
+    <div *ngIf="logged_in">
       <a routerLink="/profiledoador"><img class="mar-r-l largura-1 border-hover radius-pattern" src="user.png" alt=""></a>
-      <button class="btn btn-pattern my-2 my-sm-0" (click)="logout()">Logout</button>
+      <button (click)="openModal()" class="btn btn-outline-primary my-2 my-sm-0">Sair</button>
+
+      <app-modal [showModal]="showModal" (closeModal)="closeModal()">
+        <h2>Confirmação!</h2>
+        <p>Tem certeza que deseja sair do site?</p>
+        <button (click)="closeModal()" class="btn btn-outline-secondary mb-2 ">Voltar</button>
+        <button (click)="closeModal(); logout()" class="btn btn-outline-primary mb-2 ">Sair</button>
+      </app-modal>
     </div>
 </nav>

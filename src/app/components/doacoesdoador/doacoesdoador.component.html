@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<body>
+    <app-navegacao></app-navegacao>
+    <main class="c-main">
+        <section class="main-section">
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Doações</h2></div>
+            <h6>Quantidade total de doações resgatadas: {{ donationsData.total_donations }}</h6>
+            <p class="m-0 link-destaque"><a routerLink="/resgatardoacao" >Resgatar doação</a></p>
+            <div *ngIf="donationsData.donations.length > 0">
+              <h3>Lista de Doações:</h3>
+              <div class="rounded">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Descrição</th>
+                      <th>Data</th>
+                      <th>Instituição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let donation of donationsData.donations | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+                      <td class="description-column">{{ donation.description }}</td>
+                      <td class="date-column">{{ donation.redeemed_at | date: 'dd/MM/yyyy' }}</td>
+                      <td class="name-column" *ngIf="donation.created_by__first_name">{{ donation.created_by__first_name }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+                <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+              </div>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</body>

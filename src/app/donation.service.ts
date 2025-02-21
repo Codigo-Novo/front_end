@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Donation } from './donation.interface';
+import { DonationsResponse } from './donation.interface';
+import { catchError, Observable, switchMap, throwError } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -18,8 +19,7 @@ export class DonationService {
                     const stringcsrfToken = JSON.stringify(csrfTokens);
                     const parsedData = JSON.parse(stringcsrfToken);
                     if (!parsedData.csrfToken) {
-                        console.error('CSRF token não encontrado nos cookies.');
-                        resolve("");
+                        resolve("Erro interno.");
                         return;
                     }
                     const post_data = {
@@ -32,13 +32,11 @@ export class DonationService {
                         headers: { 'X-CSRFToken': parsedData.csrfToken }
                     }).subscribe({
                         next: (response: any) => {
-                            console.log('Resposta da API:', response);
                             const token = response?.Token;
                             resolve(token || "");
                         },
                         error: (error) => {
-                            console.error('Erro no POST:', error.error)
-                            resolve("");
+                            resolve("Erro interno.");
                         }
                     });
                 }
@@ -54,8 +52,7 @@ export class DonationService {
                     const stringcsrfToken = JSON.stringify(csrfTokens);
                     const parsedData = JSON.parse(stringcsrfToken);
                     if (!parsedData.csrfToken) {
-                        console.error('CSRF token não encontrado nos cookies.');
-                        resolve("");
+                        resolve("Erro interno.");
                         return;
                     }
                     const post_data = {
@@ -69,17 +66,76 @@ export class DonationService {
                         headers: { 'X-CSRFToken': parsedData.csrfToken }
                     }).subscribe({
                         next: (response: any) => {
-                            console.log('Resposta da API:', response);
                             const token = response?.Token;
                             resolve(token || "");
                         },
                         error: (error) => {
-                            console.error('Erro no POST:', error.error)
                             reject(error.error?.message);
                         }
                     });
                 }
             })
         })
+    }
+
+    redeemToken(token: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.apiRoot.concat('csrf/'), { withCredentials: true, observe: "response" }).subscribe({
+                next: (response) => {
+                    const csrfTokens = response.body;
+                    const stringcsrfToken = JSON.stringify(csrfTokens);
+                    const parsedData = JSON.parse(stringcsrfToken);
+                    if (!parsedData.csrfToken) {
+                        resolve("Erro interno.");
+                        return;
+                    }
+                    const post_data = {
+                        token: token || ''
+                    };
+                    const url = this.apiRoot.concat('donation/redeemToken/');
+                    this.http.post(url, post_data, {
+                        withCredentials: true,
+                        headers: { 'X-CSRFToken': parsedData.csrfToken }
+                    }).subscribe({
+                        next: (response: any) => {
+                            resolve(response?.success);
+                        },
+                        error: (error: any) => {
+                            reject(error.error?.error);
+                        }
+                    });
+                }
+            })
+        })
+    }
+
+    getInstitutionDonations(): Observable<DonationsResponse> {
+        return this.http.get<{ csrfToken: string }>(this.apiRoot.concat('csrf/'), { withCredentials: true }).pipe(
+            switchMap(response => {
+                if (!response.csrfToken) {
+                    throw new Error("CSRF token not found");
+                }
+                return this.http.get<DonationsResponse>(this.apiRoot.concat('donation/getInstitutionDonations/'), { withCredentials: true });
+            }),
+            catchError(error => {
+                console.error("Error fetching donations:", error);
+                return throwError(() => error);
+            })
+        );
+    }
+
+    getDonatorDonations(): Observable<DonationsResponse> {
+        return this.http.get<{ csrfToken: string }>(this.apiRoot.concat('csrf/'), { withCredentials: true }).pipe(
+            switchMap(response => {
+                if (!response.csrfToken) {
+                    throw new Error("CSRF token not found");
+                }
+                return this.http.get<DonationsResponse>(this.apiRoot.concat('donation/getDonatorDonations/'), { withCredentials: true });
+            }),
+            catchError(error => {
+                console.error("Error fetching donations:", error);
+                return throwError(() => error);
+            })
+        );
     }
 }

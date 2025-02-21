@@ -73,3 +73,7 @@ label{
 ::ng-deep ng-select .ng-dropdown-panel .ng-option:hover {
   background-color: #e9ecef;
 }
+
+.link-destaque{
+  font-size: var(--fonte_m);
+}

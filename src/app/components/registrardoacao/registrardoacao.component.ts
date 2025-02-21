@@ -1,4 +1,4 @@
-import { NavegacaoComponent } from '../navegacao/navegacao.component';
+import { NavinstituicaoComponent } from '../navinstituicao/navinstituicao.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NgForm, FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-Registrardoacao',
   standalone: true,
-  imports: [NavegacaoComponent, FooterComponent, FormsModule, NgIf],
+  imports: [NavinstituicaoComponent, FooterComponent, FormsModule, NgIf],
   templateUrl: './registrardoacao.component.html',
   styleUrl: './registrardoacao.component.css'
 })
