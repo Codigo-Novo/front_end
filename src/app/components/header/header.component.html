@@ -6,15 +6,20 @@
         <a class="navbar-brand" routerLink="/"><h3><img class="largura-1" src="logopng.png" alt="">Apoio a Doação</h3></a>
         <div *ngIf="logged_in">
           <a routerLink="/profiledoador"><img class="mar-r-l largura-1 border-hover radius-pattern" src="user.png" alt=""></a>
-          <button class="btn btn-outline-primary my-2 my-sm-0 mar-r-l" (click)="logout()">Sair</button>
+          <button (click)="openModal()" class="btn btn-outline-primary my-2 my-sm-0 mar-r-l">Sair</button>
           <button class="btn btn-outline-primary my-2 my-sm-0 mar-r-l" routerLink="/sobresite">Sobre o site</button>
+          <app-modal [showModal]="showModal" (closeModal)="closeModal()">
+            <h2>Confirmação!</h2>
+            <p>Tem certeza que deseja sair do site?</p>
+            <button (click)="closeModal()" class="btn btn-outline-secondary mb-2 ">Voltar</button>
+            <button (click)="closeModal(); logout()" class="btn btn-outline-primary mb-2 ">Sair</button>
+          </app-modal>
         </div>
         <div *ngIf="!logged_in">
           <button class="btn btn-outline-primary my-2 my-sm-0 mar-r-l" routerLink="/login">Entrar</button>
           <button class="btn btn-outline-primary my-2 my-sm-0 mar-r-l" routerLink="/signup">Cadastre-se</button>
           <button class="btn btn-outline-primary my-2 my-sm-0 mar-r-l" routerLink="/sobresite">Sobre o site</button>
         </div>
-    
     </nav>
 
 </header>

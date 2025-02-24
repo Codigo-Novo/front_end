@@ -12,13 +12,13 @@
             
             <form #signupInstitutionForm="ngForm" (ngSubmit)="submitData(signupInstitutionForm)">
 
-                <label for="description">Descrição</label>
+                <label for="description">Descrição<span class="red">*</span></label>
                 <textarea class="caixa-texto-p mar-baixo-1 rounded" id="description" name="description" placeholder="Descreva sua instituição. Ex: dados para contato, endereço, entre outros.     Estes dados aparecerão para os doadores quando visualizarem a página da sua instituição." ngModel required rows=6 cols=55></textarea>
                 
-                <label for="cpfcnpj">CPF/CNPJ</label>
+                <label for="cpfcnpj">CPF/CNPJ<span class="red">*</span></label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="cpforcnpj" name="cpforcnpj" placeholder="CPF ou CNPJ da instituição" ngModel required>
 
-                <label for="location">Endereço</label>
+                <label for="location">Endereço<span class="red">*</span></label>
                 <input (input)="onInput($event)" class="caixa-texto-p mar-baixo-1 rounded" type="text" id="address" name="address" placeholder="Digite aqui o seu endereço" ngModel required>
                 <div ng-model="map" id="map-canvas" style="width: 600px; height: 400px;"></div>     
                 

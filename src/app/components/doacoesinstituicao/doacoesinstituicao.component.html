@@ -34,8 +34,8 @@
                       <td>{{ donation.is_redeemed ? 'Sim' : 'Não' }}</td>
                       <td class="name-column" *ngIf="donation.redeemed_by__first_name">{{ donation.redeemed_by__first_name }}</td>
                       <td class="name-column" *ngIf="!donation.redeemed_by__first_name">Não resgatado</td>
-                      <td><button (click)="openModalEdit(donation.id!, donation.description)" class="btn btn-outline-primary my-2 my-sm-0">Editar</button></td>
-                      <td><button (click)="openModalDelete(donation.id!)" class="btn btn-outline-danger my-2 my-sm-0">Excluir</button></td>
+                      <td><img class = "seta icon" src="editar.png" (click)="openModalEdit(donation.id!, donation.description)"></td>
+                      <td><img class = "seta icon" src="excluir.png" (click)="openModalDelete(donation.id!)"></td>
                     </tr>
                   </tbody>
                 </table>

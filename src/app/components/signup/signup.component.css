@@ -24,3 +24,7 @@ label{
     text-align: center;
 
 }
+.red {
+    color: rgb(255, 57, 57);
+    font-weight: bold;
+  }

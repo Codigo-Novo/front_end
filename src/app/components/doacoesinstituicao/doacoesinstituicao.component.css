@@ -14,6 +14,18 @@ label {
     border-color: var(--bluelight2);
 }
 
+.icon {
+    max-width: 32px;
+    max-height: 32px;
+    width: auto;
+    height: auto;
+    transition: box-shadow 0.3s ease-in-out;
+}  
+
+.icon:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adiciona a sombra ao passar o mouse */
+}
+
 .c-main {
     width: 600px;
     margin: auto;

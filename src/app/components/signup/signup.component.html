@@ -9,19 +9,19 @@
            
             <form #signupForm="ngForm" (ngSubmit)="submitData(signupForm)">
 
-                <label for="name">Nome de usuário</label>
+                <label for="name">Nome de usuário<span class="red">*</span></label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="username" name="username" placeholder="Digite seu nome de usuário" ngModel required>
 
-                <label for="name">Nome</label>
+                <label for="name">Nome<span class="red">*</span></label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="name" name="name" placeholder="Digite seu nome ou de sua instituição" ngModel required>
 
-                <label for="email">E-mail</label>
+                <label for="email">E-mail<span class="red">*</span></label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="email" id="email" name="email" placeholder="Digite seu e-mail" ngModel required email>
 
-                <label for="password">Senha</label>
+                <label for="password">Senha<span class="red">*</span></label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="password" id="password" name="password" placeholder="Digite sua senha" ngModel required minlength="6">
 
-                <label for="confirm">Confirmar Senha</label>
+                <label for="confirm">Confirmar Senha<span class="red">*</span></label>
                 <input class="caixa-texto-p mar-baixo-1 rounded" type="password" id="confirm" name="confirm" placeholder="Digite sua senha novamente" ngModel required>
                 
                 <div *ngIf="!loadingDonator">
