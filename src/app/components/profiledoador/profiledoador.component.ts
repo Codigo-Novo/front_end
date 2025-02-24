@@ -41,14 +41,19 @@ export class ProfiledoadorComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         try {
-            const next = await this.api.checkAuth().toPromise();
-            this.data.getUser(next.id).subscribe({
-                next: async (data: User) => {
-                    this.user = data;
-                }
-            });
+            const test = await this.api.checkInstitution().toPromise();
+            this.router.navigate(['/profileinstituicao']);
         } catch (error) {
-            this.router.navigate(['/login']);
+            try { 
+                const next = await this.api.checkAuth().toPromise();
+                this.data.getUser(next.id).subscribe({
+                    next: async (data: User) => {
+                        this.user = data;
+                    }
+                });
+            } catch (error) {
+                this.router.navigate(['/login']);
+            }
         }
     }
 

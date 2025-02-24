@@ -4,7 +4,7 @@ body {
 }
 
 label {
-    display: block;
+    display: flex;
     width: 500px;
 }
 
@@ -12,6 +12,18 @@ label {
     width: 100%;
     font-size: 17px;
     border-color: var(--bluelight2);
+}
+
+.icon {
+    max-width: 32px;
+    max-height: 32px;
+    width: auto;
+    height: auto;
+    transition: box-shadow 0.3s ease-in-out;
+}  
+
+.icon:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adiciona a sombra ao passar o mouse */
 }
 
 .c-main {
@@ -33,15 +45,15 @@ label {
 }
 
 .token-column {
-  max-width: 300px; 
+  max-width: 270px; 
   white-space: normal; 
   overflow: visible; 
   word-wrap: break-word; 
   user-select: text; 
 }
 .description-column{
-  min-width: 400px;
-  max-width: 400px; 
+  min-width: 350px;
+  max-width: 350px; 
   overflow: ellipsis; 
   text-overflow: ellipsis;
 }

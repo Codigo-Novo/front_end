@@ -1,20 +1,25 @@
 <body>
-    <app-header></app-header>
+    <app-navinstituicao></app-navinstituicao>
     <main class="c-main">
         <section>
-            <div class="d-f"><img class="seta mar-r-l" src="seta-esquerda.png" alt=""><h2>Editar conta</h2></div>
-            <form action="" method="post">
-                <label  for="nome">Nome</label>
-                <input class="caixa-texto-p mar-baixo-1" type="text" name="nome" id="nome" placeholder="Digite seu novo nome">
-                <label  for="email">E-mail</label>
-                <input class="caixa-texto-p mar-baixo-1" type="email" name="email" id="email" placeholder="Digite seu novo email">
-                <label  for="senha">Senha</label>
-                <input class="caixa-texto-p mar-baixo-1" type="password" name="senha" id="senha" placeholder="Digite sua nova senha">
-                <label  for="confirm">Confirmar senha</label>
-                <input class="caixa-texto-p mar-baixo-1" type="password" name="confirm" id="confirm" placeholder="Digite sua nova senha novamente">
-                <label for="save"></label>
-                <input type="checkbox" name="save" id="save" required>Salvar alterações
-                <button class="btn-pattern mar-cima-1" type="submit">Editar</button>
+            <div *ngIf="success" class="alert alert-success" role="alert">
+                {{ success }}
+            </div>
+            <div *ngIf="error" class="alert alert-warning" role="alert">
+                {{ error }}
+            </div>
+            <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Atualizar dados da instituição</h2></div>
+            <form #update="ngForm">
+                <label for="description">Descrição<span class="red">*</span></label>
+                <textarea class="caixa-texto-p mar-baixo-1 rounded" id="description" name="description" placeholder="Descreva sua instituição. Ex: dados para contato, endereço, entre outros.     Estes dados aparecerão para os doadores quando visualizarem a página da sua instituição." [(ngModel)]="institution!.description" required rows=6 cols=55></textarea>
+                
+                <label for="cpfcnpj">CPF/CNPJ<span class="red">*</span></label>
+                <input class="caixa-texto-p mar-baixo-1 rounded" type="text" id="cpforcnpj" name="cpforcnpj" placeholder="CPF ou CNPJ da instituição" [(ngModel)]="institution!.cpforcnpj" required>
+
+                <label for="location">Endereço</label>
+                <input (input)="onInput($event)" class="caixa-texto-p mar-baixo-1 rounded" type="text" id="address" name="address" placeholder="Digite aqui o seu endereço. Deixe o campo em branco caso não queira alterá-lo." ngModel>
+                <div ng-model="map" id="map-canvas" style="width: 600px; height: 400px;"></div>
+                <p class="text-center"><button class="btn btn-outline-primary mar-cima-1 d-b mar-auto" type="button" (click)="submit(update)">Atualizar os dados da instituição</button></p>
             </form>
         </section>
     </main>

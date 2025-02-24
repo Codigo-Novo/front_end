@@ -29,8 +29,8 @@ export class PesquisainstituicaoComponent implements OnInit {
       this.keyword = await this.getKeyword(<number><unknown>this.keywordId);
       this.data.getInstitutions().subscribe({
         next: async (data: Institution[]) => {
+          this.institutions = data.filter(institution => institution.is_active);        
           this.institutions = data.filter(item => item.keywords.includes(Number(this.keywordId)));
-          console.log(this.institutions);          
         },
         error: (error) => {
           console.error("Erro: ", error);

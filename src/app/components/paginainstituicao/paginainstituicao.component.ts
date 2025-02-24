@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavegacaoComponent } from '../navegacao/navegacao.component';
 import { FooterComponent } from "../footer/footer.component";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../data.service';
 import { Institution } from '../../institution.interface';
 import { KeyWord } from '../../keyword.interface';
@@ -26,12 +26,17 @@ export class PaginainstituicaoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
               private data: DataService,
-              private location: Location) { }
+              private location: Location,
+              private router: Router) { }
 
   async ngOnInit(): Promise<void> {
     try {
       this.userId = this.route.snapshot.paramMap.get('id');
       this.institution = await this.getInstitution(<number><unknown>this.userId);
+      if (!this.institution.is_active) {
+        this.found = false;
+        return;
+      }
       this.institution.keywords.forEach(async (keyword) => {
         this.keywords.push(await this.getKeyword(keyword))
       })

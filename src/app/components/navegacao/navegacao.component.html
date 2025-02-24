@@ -8,7 +8,8 @@
     </div>
     <div *ngIf="logged_in">
       <a routerLink="/profiledoador"><img class="mar-r-l largura-1 border-hover radius-pattern" src="user.png" alt=""></a>
-      <button (click)="openModal()" class="btn btn-outline-primary my-2 my-sm-0">Sair</button>
+      <button (click)="openModal()" class="btn btn-outline-primary my-2 my-sm-0 mar-r-l">Sair</button>
+      <button routerLink="/sobresite" class="btn btn-outline-primary my-2 my-sm-0 mar-r-l">Sobre o site</button>
 
       <app-modal [showModal]="showModal" (closeModal)="closeModal()">
         <h2>Confirmação!</h2>

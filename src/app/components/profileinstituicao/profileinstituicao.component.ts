@@ -4,7 +4,7 @@ import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { FooterComponent } from '../footer/footer.component';
 import { ModalComponent } from '../modal/modal.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { DataService } from '../../data.service';
 import { User } from '../../user.interface';
@@ -13,7 +13,7 @@ import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-profileinstituicao',
-    imports: [NavinstituicaoComponent, FooterComponent, NgIf, FormsModule, ModalComponent],
+    imports: [NavinstituicaoComponent, FooterComponent, NgIf, FormsModule, ModalComponent, RouterLink],
     standalone: true,
     templateUrl: './profileinstituicao.component.html',
     styleUrl: './profileinstituicao.component.css'
@@ -34,7 +34,6 @@ export class ProfileinstituicaoComponent implements OnInit {
     changePassword: boolean = false;
 
     user: User | null = null;
-    institution: Institution | null = null;
 
     map: google.maps.Map | null = null;
     options: google.maps.MapOptions | null = null;
@@ -46,41 +45,10 @@ export class ProfileinstituicaoComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         try {
-            const next = await this.api.checkAuth().toPromise();
+            const next = await this.api.checkInstitution().toPromise();
             this.data.getUser(next.id).subscribe({
                 next: async (data: User) => {
                     this.user = data;
-                    this.data.getInstitutionByUser().subscribe({
-                        next: async (data: Institution) => {
-                            this.institution = data;
-                            const lat = parseFloat(this.institution.lat as unknown as string);
-                            const lng = parseFloat(this.institution.long as unknown as string);
-                            var position = { lat: lat, lng: lng };
-                            const options: google.maps.MapOptions = {
-                              center: position,
-                              zoom: 15,
-                            };
-                            var map = new google.maps.Map(document.getElementById('map-canvas')!, options);
-                            this.options = options;
-                            this.map = map;
-                            const gMarker = new google.maps.Marker({
-                              position: position,
-                              map: map,
-                              title: this.institution.user,
-                            });
-                            const infoWindow = new google.maps.InfoWindow({
-                              content: `
-                                <div>
-                                  <h6>${this.user!.first_name}</h6>
-                                  <p>${this.institution.description}</p>
-                                </div>
-                              `,
-                            });
-                            gMarker.addListener('click', () => {
-                              infoWindow.open(map, gMarker);
-                            });
-                        }
-                    })
                 }
             });
         } catch (error) {

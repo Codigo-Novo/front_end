@@ -19,3 +19,7 @@ label{
     justify-items: center;
     min-height: 100vh;
 }
+.red {
+    color: rgb(255, 57, 57);
+    font-weight: bold;
+  }

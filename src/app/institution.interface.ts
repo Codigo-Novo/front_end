@@ -9,4 +9,5 @@ export interface Institution {
     long: number;
     lat: number;
     keywords: number[];
+    is_active: boolean;
 }

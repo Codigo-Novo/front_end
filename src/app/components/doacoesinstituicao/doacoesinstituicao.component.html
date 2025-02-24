@@ -4,6 +4,9 @@
     <app-navinstituicao></app-navinstituicao>
     <main class="c-main">
         <section class="main-section">
+            <div *ngIf="success" class="alert alert-success" role="alert">
+              {{ success }}
+            </div>
             <div class="v-center d-f "><img class="seta mar-r-l" src="seta-esquerda.png" alt="" (click)="goBack()"><h2>Doações</h2></div>
             <h6>Quantidade total de doações registradas: {{ donationsData.total_donations }}</h6>
             <h6>Quantidade total de doações resgatadas: {{ donationsData.redeemed_donations }}</h6>
@@ -19,6 +22,8 @@
                       <th>Data de Registro</th>
                       <th>Resgatado</th>
                       <th>Resgatado por</th>
+                      <th>Editar</th>
+                      <th>Excluir</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -29,12 +34,39 @@
                       <td>{{ donation.is_redeemed ? 'Sim' : 'Não' }}</td>
                       <td class="name-column" *ngIf="donation.redeemed_by__first_name">{{ donation.redeemed_by__first_name }}</td>
                       <td class="name-column" *ngIf="!donation.redeemed_by__first_name">Não resgatado</td>
+                      <td><img class = "seta icon" src="editar.png" (click)="openModalEdit(donation.id!, donation.description)"></td>
+                      <td><img class = "seta icon" src="excluir.png" (click)="openModalDelete(donation.id!)"></td>
                     </tr>
                   </tbody>
                 </table>
                 </div>
                 <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
               </div>
+
+              <app-modal [showModal]="showModalEdit" (closeModal)="closeModalEdit()">
+                <div *ngIf="errorEdit" class="alert alert-warning" role="alert">
+                  {{ errorEdit }}
+                </div>
+                <h2>Editar doação</h2>
+                <form #update="ngForm">
+                  <label for="description">Descrição</label>
+                  <textarea class="caixa-texto-p mar-baixo-1 rounded" id="description" name="description" placeholder="Descreva a doação. Exemplo: itens presentes, quantidade, etc" [(ngModel)]="descriptionDonation" required rows=6 cols=55></textarea>
+
+                  <button (click)="closeModalEdit()" class="btn btn-outline-secondary mb-2 ">Voltar</button>
+                  <p class="text-center"><button (click)="editDonation(selectedDonation!, update)" class="btn btn-outline-primary mb-2 ">Salvar</button></p>
+                </form>
+              </app-modal>
+
+              <app-modal [showModal]="showModalDelete" (closeModal)="closeModalDelete()">
+                <div *ngIf="errorDelete" class="alert alert-warning" role="alert">
+                  {{ errorDelete }}
+                </div>
+                <h2>Excluir doação</h2>
+                <p>Você tem certeza que deseja excluir esta doação? Esta ação é irreversível.</p>
+                <button (click)="closeModalDelete()" class="btn btn-outline-secondary mb-2 ">Voltar</button>
+                <button (click)="deleteDonation(selectedDonation!)" class="btn btn-outline-danger mb-2 ">Excluir</button>
+              </app-modal>
+
         </section>
     </main>
     <app-footer></app-footer>

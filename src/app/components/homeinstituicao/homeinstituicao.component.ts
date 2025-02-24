@@ -39,7 +39,7 @@ export class HomeinstituicaoComponent implements OnInit {
   try {
       const next = await this.api.checkInstitution().toPromise();
       this.username = next.username;
-      this.institution = await this.getInstitution(next.id);
+      this.institution = await this.getInstitution();
       this.keywords = await this.getKeywords();
       this.keywords.push({ id: -1, name: 'Outro' });
       if (!this.selectedKeyword) {
@@ -51,9 +51,9 @@ export class HomeinstituicaoComponent implements OnInit {
     }
   }
   
-  getInstitution(id: number): Promise<Institution> {
+  getInstitution(): Promise<Institution> {
     return new Promise((resolve, reject) => {
-      this.data.getInstitution(id).subscribe(
+      this.data.getInstitutionByUser().subscribe(
         (data: Institution) => resolve(data),
         (error) => reject(error)
       );
@@ -129,7 +129,7 @@ export class HomeinstituicaoComponent implements OnInit {
       if (success) {
         this.error = '';
         this.success = `Palavra-chave ${data.value.otherKeyword} criada com sucesso!`;
-        //this.ngOnInit();
+        this.ngOnInit();
       } else {
         this.success = '';
         this.error = `Erro ao criar palavra-chave ${data.value.otherKeyword}.`;
